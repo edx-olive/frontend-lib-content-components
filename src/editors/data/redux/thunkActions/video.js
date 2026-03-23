@@ -335,16 +335,25 @@ export const uploadTranscript = ({ language, file }) => (dispatch, getState) => 
   }));
 };
 
-export const deleteTranscript = ({ language }) => (dispatch, getState) => {
+export const deleteTranscript = ({ language, action }) => (dispatch, getState) => {
   const state = getState();
   const { transcripts, videoId } = state.video;
+  const onSuccess = (response) => {
+    if (!action && response && response.status === 202) {
+      const data = response.data;
+      if (data && data.error === 'shared_video') {
+        dispatch(actions.video.updateField({ sharedVideoWarning: { language } }));
+        return;
+      }
+    }
+    const updatedTranscripts = transcripts.filter((langCode) => langCode !== language);
+    dispatch(actions.video.updateField({ transcripts: updatedTranscripts, sharedVideoWarning: null }));
+  };
   dispatch(requests.deleteTranscript({
     language,
     videoId,
-    onSuccess: () => {
-      const updatedTranscripts = transcripts.filter((langCode) => langCode !== language);
-      dispatch(actions.video.updateField({ transcripts: updatedTranscripts }));
-    },
+    action,
+    onSuccess,
   }));
 };
 
