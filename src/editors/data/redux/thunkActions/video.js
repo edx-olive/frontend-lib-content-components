@@ -338,6 +338,7 @@ export const uploadTranscript = ({ language, file }) => (dispatch, getState) => 
 export const deleteTranscript = ({ language, action }) => (dispatch, getState) => {
   const state = getState();
   const { transcripts, videoId } = state.video;
+  console.log('deleteTranscript called', { videoId, action, language });
   if (videoId && !action) {
     dispatch(actions.video.updateField({ sharedVideoWarning: { language } }));
     return;
