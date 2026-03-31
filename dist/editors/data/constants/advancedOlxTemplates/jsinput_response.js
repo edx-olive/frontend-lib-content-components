@@ -11,7 +11,7 @@ exports.jsInputResponse = exports.default = void 0;
 //     markdown: !!null
 //     showanswer: never
 // data: |
-const jsInputResponse = `<problem>
+const jsInputResponse = exports.jsInputResponse = `<problem>
     <p>
         In these problems (also called custom JavaScript problems or JS Input
         problems), you add a problem or tool that uses JavaScript in Studio.
@@ -85,7 +85,5 @@ def check_function(e, ans):
         />
     </customresponse>
 </problem>`;
-exports.jsInputResponse = jsInputResponse;
-var _default = jsInputResponse;
-exports.default = _default;
+var _default = exports.default = jsInputResponse;
 //# sourceMappingURL=jsinput_response.js.map

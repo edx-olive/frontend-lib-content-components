@@ -12,9 +12,8 @@ var _redux = require("../../data/redux");
 var _utils = require("../../utils");
 var appHooks = _interopRequireWildcard(require("../../hooks"));
 var _module = _interopRequireWildcard(require("./hooks"));
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const {
   clearSaveError,
   navigateCallback,
@@ -25,18 +24,16 @@ exports.saveBlock = saveBlock;
 exports.nullMethod = nullMethod;
 exports.navigateCallback = navigateCallback;
 exports.clearSaveError = clearSaveError;
-const state = (0, _utils.StrictDict)({
+const state = exports.state = (0, _utils.StrictDict)({
   // eslint-disable-next-line react-hooks/rules-of-hooks
   isCancelConfirmModalOpen: val => (0, _react.useState)(val)
 });
-exports.state = state;
-const handleSaveClicked = _ref => {
-  let {
-    dispatch,
-    getContent,
-    validateEntry,
-    returnFunction
-  } = _ref;
+const handleSaveClicked = ({
+  dispatch,
+  getContent,
+  validateEntry,
+  returnFunction
+}) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const returnUrl = (0, _reactRedux.useSelector)(_redux.selectors.app.returnUrl);
   const destination = returnFunction ? '' : returnUrl;
@@ -63,11 +60,10 @@ const cancelConfirmModalToggle = () => {
   };
 };
 exports.cancelConfirmModalToggle = cancelConfirmModalToggle;
-const handleCancel = _ref2 => {
-  let {
-    onClose,
-    returnFunction
-  } = _ref2;
+const handleCancel = ({
+  onClose,
+  returnFunction
+}) => {
   if (onClose) {
     return onClose;
   }

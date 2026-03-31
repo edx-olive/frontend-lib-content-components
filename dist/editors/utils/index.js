@@ -38,5 +38,5 @@ var _keyStore = _interopRequireDefault(require("./keyStore"));
 var _camelizeKeys = _interopRequireDefault(require("./camelizeKeys"));
 var _removeOnce = _interopRequireDefault(require("./removeOnce"));
 var _formatDuration = _interopRequireDefault(require("./formatDuration"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 //# sourceMappingURL=index.js.map

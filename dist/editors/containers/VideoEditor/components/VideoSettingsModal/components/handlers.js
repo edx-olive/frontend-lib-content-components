@@ -12,13 +12,10 @@ exports.onValue = exports.onEvent = exports.onChecked = exports.handleIndexTrans
  * @param {func} transform - transform method taking an index and a new value
  * @return {func} - event handler creator for index-tied values
  */
-const handleIndexEvent = _ref => {
-  let {
-    handler,
-    transform
-  } = _ref;
-  return index => handler(val => transform(index, val));
-};
+const handleIndexEvent = ({
+  handler,
+  transform
+}) => index => handler(val => transform(index, val));
 
 /**
  * handleIndexTransformEvent({ handler, setter, local, transform })
@@ -31,15 +28,12 @@ const handleIndexEvent = _ref => {
  * @return {func} - event handler creator for index-tied values with separate setter and transforms
  */
 exports.handleIndexEvent = handleIndexEvent;
-const handleIndexTransformEvent = _ref2 => {
-  let {
-    handler,
-    local,
-    setter,
-    transform
-  } = _ref2;
-  return index => handler(val => setter(transform(local, index, val)));
-};
+const handleIndexTransformEvent = ({
+  handler,
+  local,
+  setter,
+  transform
+}) => index => handler(val => setter(transform(local, index, val)));
 
 /**
  * onValue(handler)

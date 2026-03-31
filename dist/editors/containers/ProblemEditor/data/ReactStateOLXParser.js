@@ -8,7 +8,7 @@ var _lodashEs = _interopRequireDefault(require("lodash-es"));
 var _fastXmlParser = require("fast-xml-parser");
 var _problem = require("../../../data/constants/problem");
 var _constants = require("../components/EditProblemView/SettingsWidget/settingsComponents/Tolerance/constants");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 class ReactStateOLXParser {
   constructor(problemState) {
     const richTextParserOptions = {
@@ -575,6 +575,5 @@ class ReactStateOLXParser {
     return problemString;
   }
 }
-var _default = ReactStateOLXParser;
-exports.default = _default;
+var _default = exports.default = ReactStateOLXParser;
 //# sourceMappingURL=ReactStateOLXParser.js.map

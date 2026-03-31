@@ -233,6 +233,5 @@ const getStyles = () => `@import url("https://fonts.googleapis.com/css2?family=O
     margin: 0;
   }`;
 exports.getStyles = getStyles;
-var _default = getStyles({});
-exports.default = _default;
+var _default = exports.default = getStyles({});
 //# sourceMappingURL=tinyMCEStyles.js.map

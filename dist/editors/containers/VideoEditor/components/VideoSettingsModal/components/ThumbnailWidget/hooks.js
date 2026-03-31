@@ -9,10 +9,9 @@ var _reactRedux = require("react-redux");
 var _redux = require("../../../../../../data/redux");
 var constants = _interopRequireWildcard(require("./constants"));
 var _module = _interopRequireWildcard(require("./hooks"));
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const state = {
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const state = exports.state = {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   showSizeError: args => _react.default.useState(args)
 };
@@ -26,13 +25,11 @@ const state = {
  * @param {string} mimeType - string of mimeType for the canvas
  * @return {File} new File object
  */
-exports.state = state;
-const createResampledFile = _ref => {
-  let {
-    canvasUrl,
-    filename,
-    mimeType
-  } = _ref;
+const createResampledFile = ({
+  canvasUrl,
+  filename,
+  mimeType
+}) => {
   const arr = canvasUrl.split(',');
   const bstr = atob(arr[1]);
   let n = bstr.length;
@@ -54,11 +51,10 @@ const createResampledFile = _ref => {
  * @return {array} array containing the base64 URL for the resampled image and the file containing the resampled image
  */
 exports.createResampledFile = createResampledFile;
-const resampleImage = _ref2 => {
-  let {
-    image,
-    filename
-  } = _ref2;
+const resampleImage = ({
+  image,
+  filename
+}) => {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -88,11 +84,10 @@ const resampleImage = _ref2 => {
   return [canvas.toDataURL(), resampledFile];
 };
 exports.resampleImage = resampleImage;
-const checkValidDimensions = _ref3 => {
-  let {
-    width,
-    height
-  } = _ref3;
+const checkValidDimensions = ({
+  width,
+  height
+}) => {
   if (width < constants.MIN_WIDTH || height < height.MIN_WIDTH) {
     return false;
   }
@@ -103,11 +98,10 @@ const checkValidDimensions = _ref3 => {
   return true;
 };
 exports.checkValidDimensions = checkValidDimensions;
-const checkValidSize = _ref4 => {
-  let {
-    file,
-    onSizeFail
-  } = _ref4;
+const checkValidSize = ({
+  file,
+  onSizeFail
+}) => {
   // Check if the file size is greater than 2 MB, upload size maximum, or
   // if the file size is greater than 2 KB, upload size minimum
   if (file.size > constants.MAX_FILE_SIZE_MB || file.size < constants.MIN_FILE_SIZE_KB) {
@@ -117,12 +111,11 @@ const checkValidSize = _ref4 => {
   return true;
 };
 exports.checkValidSize = checkValidSize;
-const fileInput = _ref5 => {
-  let {
-    setThumbnailSrc,
-    imgRef,
-    fileSizeError
-  } = _ref5;
+const fileInput = ({
+  setThumbnailSrc,
+  imgRef,
+  fileSizeError
+}) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = (0, _reactRedux.useDispatch)();
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -190,36 +183,32 @@ const fileSizeError = () => {
   };
 };
 exports.fileSizeError = fileSizeError;
-const deleteThumbnail = _ref6 => {
-  let {
-    dispatch
-  } = _ref6;
-  return () => {
-    dispatch(_redux.actions.video.updateField({
-      thumbnail: null
-    }));
-    const emptyCanvas = document.createElement('canvas');
-    const ctx = emptyCanvas.getContext('2d');
-    emptyCanvas.width = constants.MAX_WIDTH;
-    emptyCanvas.height = constants.MAX_HEIGHT;
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, emptyCanvas.width, emptyCanvas.height);
-    const file = createResampledFile({
-      canvasUrl: emptyCanvas.toDataURL(),
-      filename: 'blankThumbnail.png',
-      mimeType: 'image/png'
-    });
-    dispatch(_redux.thunkActions.video.uploadThumbnail({
-      thumbnail: file,
-      emptyCanvas
-    }));
-  };
+const deleteThumbnail = ({
+  dispatch
+}) => () => {
+  dispatch(_redux.actions.video.updateField({
+    thumbnail: null
+  }));
+  const emptyCanvas = document.createElement('canvas');
+  const ctx = emptyCanvas.getContext('2d');
+  emptyCanvas.width = constants.MAX_WIDTH;
+  emptyCanvas.height = constants.MAX_HEIGHT;
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, emptyCanvas.width, emptyCanvas.height);
+  const file = createResampledFile({
+    canvasUrl: emptyCanvas.toDataURL(),
+    filename: 'blankThumbnail.png',
+    mimeType: 'image/png'
+  });
+  dispatch(_redux.thunkActions.video.uploadThumbnail({
+    thumbnail: file,
+    emptyCanvas
+  }));
 };
 exports.deleteThumbnail = deleteThumbnail;
-var _default = {
+var _default = exports.default = {
   fileInput,
   fileSizeError,
   deleteThumbnail
 };
-exports.default = _default;
 //# sourceMappingURL=hooks.js.map

@@ -15,15 +15,14 @@ var _hooks = _interopRequireDefault(require("./hooks"));
 var _LanguageNamesWidget = _interopRequireDefault(require("./LanguageNamesWidget"));
 var _videoThumbnail = _interopRequireDefault(require("../../../../../../data/images/videoThumbnail.svg"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const VideoPreviewWidget = _ref => {
-  let {
-    thumbnail,
-    videoSource,
-    transcripts,
-    blockTitle,
-    intl
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const VideoPreviewWidget = ({
+  thumbnail,
+  videoSource,
+  transcripts,
+  blockTitle,
+  intl
+}) => {
   const imgRef = _react.default.useRef();
   const videoType = intl.formatMessage(_hooks.default.getVideoType(videoSource));
   const thumbnailImage = thumbnail || _videoThumbnail.default;
@@ -82,6 +81,5 @@ const mapStateToProps = state => ({
   blockTitle: _redux.selectors.app.blockTitle(state)
 });
 exports.mapStateToProps = mapStateToProps;
-var _default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps)(VideoPreviewWidget));
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps)(VideoPreviewWidget));
 //# sourceMappingURL=index.js.map

@@ -10,13 +10,12 @@ var _multiSelect = _interopRequireDefault(require("./multiSelect"));
 var _numeric = _interopRequireDefault(require("./numeric"));
 var _singleSelect = _interopRequireDefault(require("./singleSelect"));
 var _textInput = _interopRequireDefault(require("./textInput"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-var _default = (0, _utils.StrictDict)({
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var _default = exports.default = (0, _utils.StrictDict)({
   dropdown: _dropdown.default,
   multiSelect: _multiSelect.default,
   numeric: _numeric.default,
   singleSelect: _singleSelect.default,
   textInput: _textInput.default
 });
-exports.default = _default;
 //# sourceMappingURL=index.js.map

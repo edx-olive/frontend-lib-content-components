@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.singleSelect = exports.default = void 0;
 /* eslint-disable */
-const singleSelect = `<problem>
+const singleSelect = exports.singleSelect = `<problem>
   <multiplechoiceresponse>
     <choicegroup>
       <choice correct="true"></choice>
@@ -14,7 +14,5 @@ const singleSelect = `<problem>
     </choicegroup>
   </multiplechoiceresponse>
 </problem>`;
-exports.singleSelect = singleSelect;
-var _default = singleSelect;
-exports.default = _default;
+var _default = exports.default = singleSelect;
 //# sourceMappingURL=singleSelect.js.map

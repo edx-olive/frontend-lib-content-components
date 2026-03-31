@@ -27,6 +27,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Text for button that navigates back to the course outline'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

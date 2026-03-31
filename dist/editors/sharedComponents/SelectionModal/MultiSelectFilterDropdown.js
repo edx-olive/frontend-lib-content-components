@@ -10,12 +10,11 @@ var _paragon = require("@edx/paragon");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _utils = require("../../containers/VideoGallery/utils");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const MultiSelectFilterDropdown = _ref => {
-  let {
-    selected,
-    onSelectionChange
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const MultiSelectFilterDropdown = ({
+  selected,
+  onSelectionChange
+}) => {
   const intl = (0, _i18n.useIntl)();
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Dropdown, {
     autoClose: false,
@@ -42,6 +41,5 @@ MultiSelectFilterDropdown.propTypes = {
   selected: _propTypes.default.arrayOf(_propTypes.default.string).isRequired,
   onSelectionChange: _propTypes.default.func.isRequired
 };
-var _default = MultiSelectFilterDropdown;
-exports.default = _default;
+var _default = exports.default = MultiSelectFilterDropdown;
 //# sourceMappingURL=MultiSelectFilterDropdown.js.map

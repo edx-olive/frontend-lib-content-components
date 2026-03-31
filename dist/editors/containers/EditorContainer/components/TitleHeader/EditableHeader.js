@@ -9,35 +9,32 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _paragon = require("@edx/paragon");
 var _EditConfirmationButtons = _interopRequireDefault(require("./EditConfirmationButtons"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const EditableHeader = _ref => {
-  let {
-    handleChange,
-    updateTitle,
-    handleKeyDown,
-    inputRef,
-    localTitle,
-    cancelEdit
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Form.Group, {
-    onBlur: e => updateTitle(e),
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Form.Control, {
-      style: {
-        paddingInlineEnd: 'calc(1rem + 84px)'
-      },
-      autoFocus: true,
-      trailingElement: /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditConfirmationButtons.default, {
-        updateTitle,
-        cancelEdit
-      }),
-      onChange: handleChange,
-      onKeyDown: handleKeyDown,
-      placeholder: "Title",
-      ref: inputRef,
-      value: localTitle
-    })
-  });
-};
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const EditableHeader = ({
+  handleChange,
+  updateTitle,
+  handleKeyDown,
+  inputRef,
+  localTitle,
+  cancelEdit
+}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Form.Group, {
+  onBlur: e => updateTitle(e),
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Form.Control, {
+    style: {
+      paddingInlineEnd: 'calc(1rem + 84px)'
+    },
+    autoFocus: true,
+    trailingElement: /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditConfirmationButtons.default, {
+      updateTitle,
+      cancelEdit
+    }),
+    onChange: handleChange,
+    onKeyDown: handleKeyDown,
+    placeholder: "Title",
+    ref: inputRef,
+    value: localTitle
+  })
+});
 exports.EditableHeader = EditableHeader;
 EditableHeader.defaultProps = {
   inputRef: null
@@ -54,6 +51,5 @@ EditableHeader.propTypes = {
   localTitle: _propTypes.default.string.isRequired,
   cancelEdit: _propTypes.default.func.isRequired
 };
-var _default = EditableHeader;
-exports.default = _default;
+var _default = exports.default = EditableHeader;
 //# sourceMappingURL=EditableHeader.js.map

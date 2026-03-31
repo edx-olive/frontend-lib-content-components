@@ -14,11 +14,10 @@ var _SelectTypeWrapper = _interopRequireDefault(require("./SelectTypeWrapper"));
 var _hooks = _interopRequireDefault(require("./hooks"));
 var _problem = require("../../../../data/constants/problem");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const SelectTypeModal = _ref => {
-  let {
-    onClose
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const SelectTypeModal = ({
+  onClose
+}) => {
   const {
     selected,
     setSelected
@@ -50,6 +49,5 @@ exports.SelectTypeModal = SelectTypeModal;
 SelectTypeModal.propTypes = {
   onClose: _propTypes.default.func.isRequired
 };
-var _default = SelectTypeModal;
-exports.default = _default;
+var _default = exports.default = SelectTypeModal;
 //# sourceMappingURL=index.js.map

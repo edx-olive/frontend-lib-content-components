@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.videoDataProps = exports.problemDataProps = exports.default = exports.answerOptionProps = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _problem = require("../../constants/problem");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const videoDataProps = {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const videoDataProps = exports.videoDataProps = {
   videoSource: _propTypes.default.string,
   videoId: _propTypes.default.string,
   fallbackVideos: _propTypes.default.arrayOf(_propTypes.default.string),
@@ -31,8 +31,7 @@ const videoDataProps = {
     shareAlike: _propTypes.default.bool
   })
 };
-exports.videoDataProps = videoDataProps;
-const answerOptionProps = _propTypes.default.shape({
+const answerOptionProps = exports.answerOptionProps = _propTypes.default.shape({
   id: _propTypes.default.string,
   title: _propTypes.default.string,
   correct: _propTypes.default.bool,
@@ -40,8 +39,7 @@ const answerOptionProps = _propTypes.default.shape({
   selectedFeedback: _propTypes.default.string,
   unselectedFeedback: _propTypes.default.string
 });
-exports.answerOptionProps = answerOptionProps;
-const problemDataProps = {
+const problemDataProps = exports.problemDataProps = {
   rawOLX: _propTypes.default.string,
   problemType: _propTypes.default.instanceOf(_problem.ProblemTypes),
   question: _propTypes.default.string,
@@ -71,11 +69,9 @@ const problemDataProps = {
     })
   })
 };
-exports.problemDataProps = problemDataProps;
-var _default = {
+var _default = exports.default = {
   videoDataProps,
   problemDataProps,
   answerOptionProps
 };
-exports.default = _default;
 //# sourceMappingURL=types.js.map

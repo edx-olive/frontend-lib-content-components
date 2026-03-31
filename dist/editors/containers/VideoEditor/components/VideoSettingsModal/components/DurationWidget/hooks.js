@@ -7,20 +7,18 @@ exports.valueFromDuration = exports.updateDuration = exports.onDurationKeyDown =
 var _react = require("react");
 var _messages = _interopRequireDefault(require("../messages"));
 var _module = _interopRequireWildcard(require("./hooks"));
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 const durationMatcher = /^(\d{0,2}):?(\d{0,2})?:?(\d{0,2})?$/i;
-const durationWidget = _ref => {
-  let {
-    duration,
-    updateField
-  } = _ref;
+const durationWidget = ({
+  duration,
+  updateField
+}) => {
   const setDuration = val => updateField({
     duration: val
   });
@@ -44,12 +42,11 @@ const durationWidget = _ref => {
     }),
     onChange: index => e => setUnsavedDuration(_module.onDurationChange(unsavedDuration, index, e.target.value)),
     onKeyDown: index => e => setUnsavedDuration(_module.onDurationKeyDown(unsavedDuration, index, e)),
-    getTotalLabel: _ref2 => {
-      let {
-        durationString,
-        subtitle,
-        intl
-      } = _ref2;
+    getTotalLabel: ({
+      durationString,
+      subtitle,
+      intl
+    }) => {
       if (!durationString.stopTime) {
         if (!durationString.startTime) {
           return intl.formatMessage(_messages.default.fullVideoLength);
@@ -115,15 +112,14 @@ const durationStringFromValue = value => {
  *   updateDuration(args)(index, durationString)
  */
 exports.durationStringFromValue = durationStringFromValue;
-const updateDuration = _ref3 => {
-  let {
-    duration,
-    unsavedDuration,
-    setDuration,
-    setUnsavedDuration,
-    index,
-    inputString
-  } = _ref3;
+const updateDuration = ({
+  duration,
+  unsavedDuration,
+  setDuration,
+  setUnsavedDuration,
+  index,
+  inputString
+}) => {
   let newDurationString = inputString;
   let newValue = _module.valueFromDuration(newDurationString);
   // maxTime is 23:59:59 or 86399 seconds
@@ -227,7 +223,7 @@ const valueFromDuration = duration => {
   return ((hours * 60 + minutes) * 60 + seconds) * 1000;
 };
 exports.valueFromDuration = valueFromDuration;
-var _default = {
+var _default = exports.default = {
   durationWidget,
   durationString,
   durationStringFromValue,
@@ -236,5 +232,4 @@ var _default = {
   onDurationKeyDown,
   valueFromDuration
 };
-exports.default = _default;
 //# sourceMappingURL=hooks.js.map

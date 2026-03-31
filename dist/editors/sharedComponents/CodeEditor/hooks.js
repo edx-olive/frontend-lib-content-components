@@ -14,18 +14,16 @@ var _langXml = require("@codemirror/lang-xml");
 var _lint = require("@codemirror/lint");
 var _constants = _interopRequireDefault(require("./constants"));
 require("./index.scss");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 const CODEMIRROR_LANGUAGES = {
   HTML: 'html',
   XML: 'xml'
 };
-const state = {
+const state = exports.state = {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   showBtnEscapeHTML: val => _react.default.useState(val)
 };
-exports.state = state;
 const prepareShowBtnEscapeHTML = () => {
   const [visibility, setVisibility] = state.showBtnEscapeHTML(true);
   const hide = () => setVisibility(false);
@@ -35,20 +33,18 @@ const prepareShowBtnEscapeHTML = () => {
   };
 };
 exports.prepareShowBtnEscapeHTML = prepareShowBtnEscapeHTML;
-const cleanHTML = _ref => {
-  let {
-    initialText
-  } = _ref;
+const cleanHTML = ({
+  initialText
+}) => {
   const translateRegex = new RegExp(`&(${Object.keys(_constants.default).join('|')});`, 'g');
   const translator = ($0, $1) => _constants.default[$1];
   return initialText.replace(translateRegex, translator);
 };
 exports.cleanHTML = cleanHTML;
-const syntaxChecker = _ref2 => {
-  let {
-    textArr,
-    lang
-  } = _ref2;
+const syntaxChecker = ({
+  textArr,
+  lang
+}) => {
   const diagnostics = [];
   if (lang === 'xml' && textArr) {
     const docString = textArr.join('\n');
@@ -73,13 +69,12 @@ const syntaxChecker = _ref2 => {
   return diagnostics;
 };
 exports.syntaxChecker = syntaxChecker;
-const createCodeMirrorDomNode = _ref3 => {
-  let {
-    ref,
-    initialText,
-    upstreamRef,
-    lang
-  } = _ref3;
+const createCodeMirrorDomNode = ({
+  ref,
+  initialText,
+  upstreamRef,
+  lang
+}) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   (0, _react.useEffect)(() => {
     const languageExtension = lang === CODEMIRROR_LANGUAGES.HTML ? (0, _langHtml.html)() : (0, _langXml.xml)();
@@ -110,11 +105,10 @@ const createCodeMirrorDomNode = _ref3 => {
   }, []);
 };
 exports.createCodeMirrorDomNode = createCodeMirrorDomNode;
-const escapeHTMLSpecialChars = _ref4 => {
-  let {
-    ref,
-    hideBtn
-  } = _ref4;
+const escapeHTMLSpecialChars = ({
+  ref,
+  hideBtn
+}) => {
   const text = ref.current.state.doc.toString();
   let pos = 0;
   const changes = [];

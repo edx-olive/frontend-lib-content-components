@@ -12,10 +12,10 @@ var _lodashEs = require("lodash-es");
 var _reactOnclickoutside = _interopRequireDefault(require("react-onclickoutside"));
 var _FormGroup = _interopRequireDefault(require("./FormGroup"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); } // eslint-disable-next-line import/no-unresolved
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } // eslint-disable-next-line import/no-unresolved
 class TypeaheadDropdown extends _react.default.Component {
   constructor(props) {
     super(props);
@@ -82,8 +82,7 @@ class TypeaheadDropdown extends _react.default.Component {
   }
 
   // eslint-disable-next-line react/sort-comp
-  getItems() {
-    let strToFind = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  getItems(strToFind = '') {
     let {
       options
     } = this.props;
@@ -279,6 +278,5 @@ TypeaheadDropdown.propTypes = {
   newOptionButtonLabel: _propTypes.default.string,
   addNewOption: _propTypes.default.func
 };
-var _default = (0, _reactOnclickoutside.default)(TypeaheadDropdown);
-exports.default = _default;
+var _default = exports.default = (0, _reactOnclickoutside.default)(TypeaheadDropdown);
 //# sourceMappingURL=index.js.map

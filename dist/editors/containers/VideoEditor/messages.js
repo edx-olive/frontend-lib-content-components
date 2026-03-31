@@ -17,6 +17,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Text of the replace video button to return to the video gallery'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

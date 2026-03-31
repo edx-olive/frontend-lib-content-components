@@ -11,8 +11,7 @@ var requests = _interopRequireWildcard(require("./requests"));
 var _module = _interopRequireWildcard(require("./video"));
 var _hooks = require("../../../containers/VideoEditor/components/VideoSettingsModal/components/DurationWidget/hooks");
 var _api = require("../../services/cms/api");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 /* eslint-disable import/no-cycle */
 
 const loadVideoData = (selectedVideoId, selectedVideoUrl) => (dispatch, getState) => {
@@ -88,7 +87,6 @@ const loadVideoData = (selectedVideoId, selectedVideoUrl) => (dispatch, getState
       stopTime: (0, _hooks.valueFromDuration)(rawVideoData.end_time || '00:00:00'),
       total: rawVideoData.duration || 0 // TODO can we get total duration? if not, probably dropping from widget
     },
-
     handout: rawVideoData.handout,
     licenseType,
     licenseDetails: {
@@ -128,12 +126,11 @@ const loadVideoData = (selectedVideoId, selectedVideoUrl) => (dispatch, getState
   }
 };
 exports.loadVideoData = loadVideoData;
-const determineVideoSources = _ref => {
-  let {
-    edxVideoId,
-    youtubeId,
-    html5Sources
-  } = _ref;
+const determineVideoSources = ({
+  edxVideoId,
+  youtubeId,
+  html5Sources
+}) => {
   const youtubeUrl = `https://youtu.be/${youtubeId}`;
   let videoUrl;
   let fallbackVideos;
@@ -149,11 +146,10 @@ const determineVideoSources = _ref => {
   };
 };
 exports.determineVideoSources = determineVideoSources;
-const parseVideoSharingSetting = _ref2 => {
-  let {
-    courseSetting,
-    blockSetting
-  } = _ref2;
+const parseVideoSharingSetting = ({
+  courseSetting,
+  blockSetting
+}) => {
   switch (courseSetting) {
     case 'all-on':
       return {
@@ -178,10 +174,9 @@ const parseVideoSharingSetting = _ref2 => {
   }
 };
 exports.parseVideoSharingSetting = parseVideoSharingSetting;
-const parseTranscripts = _ref3 => {
-  let {
-    transcriptsData
-  } = _ref3;
+const parseTranscripts = ({
+  transcriptsData
+}) => {
   if (!transcriptsData) {
     return [];
   }
@@ -205,11 +200,10 @@ const parseTranscripts = _ref3 => {
 
 // partially copied from frontend-app-learning/src/courseware/course/course-license/CourseLicense.jsx
 exports.parseTranscripts = parseTranscripts;
-const parseLicense = _ref4 => {
-  let {
-    licenseData,
-    level
-  } = _ref4;
+const parseLicense = ({
+  licenseData,
+  level
+}) => {
   if (!licenseData) {
     return [null, {}];
   }
@@ -274,61 +268,55 @@ const saveVideoData = () => (dispatch, getState) => {
   return _2.selectors.video.videoSettings(state);
 };
 exports.saveVideoData = saveVideoData;
-const uploadThumbnail = _ref5 => {
-  let {
+const uploadThumbnail = ({
+  thumbnail,
+  emptyCanvas
+}) => (dispatch, getState) => {
+  const state = getState();
+  const {
+    videoId
+  } = state.video;
+  const {
+    studioEndpointUrl
+  } = state.app;
+  dispatch(requests.uploadThumbnail({
     thumbnail,
-    emptyCanvas
-  } = _ref5;
-  return (dispatch, getState) => {
-    const state = getState();
-    const {
-      videoId
-    } = state.video;
-    const {
-      studioEndpointUrl
-    } = state.app;
-    dispatch(requests.uploadThumbnail({
-      thumbnail,
-      videoId,
-      onSuccess: response => {
-        let thumbnailUrl;
-        if (response.data.image_url.startsWith('/')) {
-          // in local environments, image_url is a relative path
-          thumbnailUrl = studioEndpointUrl + response.data.image_url;
-        } else {
-          // in stage and production, image_url is an absolute path to the image
-          thumbnailUrl = response.data.image_url;
-        }
-        if (!emptyCanvas) {
-          dispatch(_2.actions.video.updateField({
-            thumbnail: thumbnailUrl
-          }));
-        }
-      },
-      onFailure: e => console.log({
-        UploadFailure: e
-      }, 'Resampling thumbnail upload')
-    }));
-  };
+    videoId,
+    onSuccess: response => {
+      let thumbnailUrl;
+      if (response.data.image_url.startsWith('/')) {
+        // in local environments, image_url is a relative path
+        thumbnailUrl = studioEndpointUrl + response.data.image_url;
+      } else {
+        // in stage and production, image_url is an absolute path to the image
+        thumbnailUrl = response.data.image_url;
+      }
+      if (!emptyCanvas) {
+        dispatch(_2.actions.video.updateField({
+          thumbnail: thumbnailUrl
+        }));
+      }
+    },
+    onFailure: e => console.log({
+      UploadFailure: e
+    }, 'Resampling thumbnail upload')
+  }));
 };
 
 // Handout Thunks:
 exports.uploadThumbnail = uploadThumbnail;
-const uploadHandout = _ref6 => {
-  let {
-    file
-  } = _ref6;
-  return dispatch => {
-    dispatch(requests.uploadAsset({
-      asset: file,
-      onSuccess: response => {
-        const handout = response.data.asset.url;
-        dispatch(_2.actions.video.updateField({
-          handout
-        }));
-      }
-    }));
-  };
+const uploadHandout = ({
+  file
+}) => dispatch => {
+  dispatch(requests.uploadAsset({
+    asset: file,
+    onSuccess: response => {
+      const handout = response.data.asset.url;
+      dispatch(_2.actions.video.updateField({
+        handout
+      }));
+    }
+  }));
 };
 
 // Transcript Thunks:
@@ -356,193 +344,179 @@ const importTranscript = () => (dispatch, getState) => {
   }));
 };
 exports.importTranscript = importTranscript;
-const uploadTranscript = _ref7 => {
-  let {
+const uploadTranscript = ({
+  language,
+  file
+}) => (dispatch, getState) => {
+  const state = getState();
+  const {
+    transcripts,
+    videoId
+  } = state.video;
+  // Remove the placeholder '' from the unset language from the list of transcripts.
+  const transcriptsPlaceholderRemoved = (0, _lodashEs.isEmpty)(transcripts) ? transcripts : (0, _utils.removeItemOnce)(transcripts, '');
+  dispatch(requests.uploadTranscript({
     language,
-    file
-  } = _ref7;
-  return (dispatch, getState) => {
-    const state = getState();
-    const {
-      transcripts,
-      videoId
-    } = state.video;
-    // Remove the placeholder '' from the unset language from the list of transcripts.
-    const transcriptsPlaceholderRemoved = (0, _lodashEs.isEmpty)(transcripts) ? transcripts : (0, _utils.removeItemOnce)(transcripts, '');
-    dispatch(requests.uploadTranscript({
-      language,
-      videoId,
-      transcript: file,
-      onSuccess: response => {
-        // if we aren't replacing, add the language to the redux store.
-        if (!transcriptsPlaceholderRemoved.includes(language)) {
-          dispatch(_2.actions.video.updateField({
-            transcripts: [...transcriptsPlaceholderRemoved, language]
-          }));
-        }
-        if (_2.selectors.video.videoId(state) === '') {
-          dispatch(_2.actions.video.updateField({
-            videoId: response.data.edx_video_id
-          }));
-        }
+    videoId,
+    transcript: file,
+    onSuccess: response => {
+      // if we aren't replacing, add the language to the redux store.
+      if (!transcriptsPlaceholderRemoved.includes(language)) {
+        dispatch(_2.actions.video.updateField({
+          transcripts: [...transcriptsPlaceholderRemoved, language]
+        }));
       }
-    }));
-  };
+      if (_2.selectors.video.videoId(state) === '') {
+        dispatch(_2.actions.video.updateField({
+          videoId: response.data.edx_video_id
+        }));
+      }
+    }
+  }));
 };
 exports.uploadTranscript = uploadTranscript;
-const deleteTranscript = _ref8 => {
-  let {
-    language,
-    action
-  } = _ref8;
-  return (dispatch, getState) => {
-    const state = getState();
-    const {
-      transcripts,
-      videoId
-    } = state.video;
-    const onSuccess = response => {
-      if (!action && response && response.status === 202) {
-        const data = response.data;
-        if (data && data.error === 'shared_video') {
-          dispatch(_2.actions.video.updateField({
-            sharedVideoWarning: {
-              language
-            }
-          }));
-          return;
-        }
+const deleteTranscript = ({
+  language,
+  action
+}) => (dispatch, getState) => {
+  const state = getState();
+  const {
+    transcripts,
+    videoId
+  } = state.video;
+  console.log('deleteTranscript called', {
+    videoId,
+    action,
+    language
+  });
+  if (videoId && !action) {
+    dispatch(_2.actions.video.updateField({
+      sharedVideoWarning: {
+        language
       }
+    }));
+    return;
+  }
+  dispatch(requests.deleteTranscript({
+    language,
+    videoId,
+    action,
+    onSuccess: () => {
       const updatedTranscripts = transcripts.filter(langCode => langCode !== language);
       dispatch(_2.actions.video.updateField({
         transcripts: updatedTranscripts,
         sharedVideoWarning: null
       }));
-    };
-    dispatch(requests.deleteTranscript({
-      language,
-      videoId,
-      action,
-      onSuccess
-    }));
-  };
+    }
+  }));
 };
 exports.deleteTranscript = deleteTranscript;
-const updateTranscriptLanguage = _ref9 => {
-  let {
-    newLanguageCode,
-    languageBeforeChange
-  } = _ref9;
-  return (dispatch, getState) => {
-    const state = getState();
-    const {
-      video: {
-        transcripts,
-        videoId
-      }
-    } = state;
-    _2.selectors.video.getTranscriptDownloadUrl(state);
-    dispatch(requests.getTranscriptFile({
-      videoId,
-      language: languageBeforeChange,
-      onSuccess: response => {
-        dispatch(requests.updateTranscriptLanguage({
-          languageBeforeChange,
-          file: new File([new Blob([response.data], {
-            type: 'text/plain'
-          })], `${videoId}_${newLanguageCode}.srt`, {
-            type: 'text/plain'
-          }),
-          newLanguageCode,
-          videoId,
-          onSuccess: () => {
-            const newTranscripts = transcripts.filter(transcript => transcript !== languageBeforeChange);
-            newTranscripts.push(newLanguageCode);
-            dispatch(_2.actions.video.updateField({
-              transcripts: newTranscripts
-            }));
-          }
-        }));
-      }
-    }));
-  };
+const updateTranscriptLanguage = ({
+  newLanguageCode,
+  languageBeforeChange
+}) => (dispatch, getState) => {
+  const state = getState();
+  const {
+    video: {
+      transcripts,
+      videoId
+    }
+  } = state;
+  _2.selectors.video.getTranscriptDownloadUrl(state);
+  dispatch(requests.getTranscriptFile({
+    videoId,
+    language: languageBeforeChange,
+    onSuccess: response => {
+      dispatch(requests.updateTranscriptLanguage({
+        languageBeforeChange,
+        file: new File([new Blob([response.data], {
+          type: 'text/plain'
+        })], `${videoId}_${newLanguageCode}.srt`, {
+          type: 'text/plain'
+        }),
+        newLanguageCode,
+        videoId,
+        onSuccess: () => {
+          const newTranscripts = transcripts.filter(transcript => transcript !== languageBeforeChange);
+          newTranscripts.push(newLanguageCode);
+          dispatch(_2.actions.video.updateField({
+            transcripts: newTranscripts
+          }));
+        }
+      }));
+    }
+  }));
 };
 exports.updateTranscriptLanguage = updateTranscriptLanguage;
-const replaceTranscript = _ref10 => {
-  let {
-    newFile,
-    newFilename,
-    language
-  } = _ref10;
-  return (dispatch, getState) => {
-    const state = getState();
-    const {
-      videoId
-    } = state.video;
-    dispatch(requests.deleteTranscript({
-      language,
-      videoId,
-      onSuccess: () => {
-        dispatch(uploadTranscript({
-          language,
-          file: newFile,
-          filename: newFilename
-        }));
-      }
-    }));
-  };
+const replaceTranscript = ({
+  newFile,
+  newFilename,
+  language
+}) => (dispatch, getState) => {
+  const state = getState();
+  const {
+    videoId
+  } = state.video;
+  dispatch(requests.deleteTranscript({
+    language,
+    videoId,
+    onSuccess: () => {
+      dispatch(uploadTranscript({
+        language,
+        file: newFile,
+        filename: newFilename
+      }));
+    }
+  }));
 };
 exports.replaceTranscript = replaceTranscript;
-const uploadVideo = _ref11 => {
-  let {
-    supportedFiles,
-    setLoadSpinner,
-    postUploadRedirect
-  } = _ref11;
-  return dispatch => {
-    const data = {
-      files: []
-    };
-    setLoadSpinner(true);
-    supportedFiles.forEach(file => {
-      const fileData = file.get('file');
-      data.files.push({
-        file_name: fileData.name,
-        content_type: fileData.type
-      });
-    });
-    dispatch(requests.uploadVideo({
-      data,
-      onSuccess: async response => {
-        const {
-          files
-        } = response.data;
-        await Promise.all(Object.values(files).map(async fileObj => {
-          const fileName = fileObj.file_name;
-          const edxVideoId = fileObj.edx_video_id;
-          const uploadUrl = fileObj.upload_url;
-          const uploadFile = supportedFiles.find(file => file.get('file').name === fileName);
-          if (!uploadFile) {
-            console.error(`Could not find file object with name "${fileName}" in supportedFiles array.`);
-            return;
-          }
-          const formData = new FormData();
-          formData.append('uploaded-file', uploadFile.get('file'));
-          await fetch(uploadUrl, {
-            method: 'PUT',
-            body: formData,
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }).then(() => postUploadRedirect(edxVideoId)).catch(error => console.error('Error uploading file:', error));
-        }));
-        setLoadSpinner(false);
-      }
-    }));
+const uploadVideo = ({
+  supportedFiles,
+  setLoadSpinner,
+  postUploadRedirect
+}) => dispatch => {
+  const data = {
+    files: []
   };
+  setLoadSpinner(true);
+  supportedFiles.forEach(file => {
+    const fileData = file.get('file');
+    data.files.push({
+      file_name: fileData.name,
+      content_type: fileData.type
+    });
+  });
+  dispatch(requests.uploadVideo({
+    data,
+    onSuccess: async response => {
+      const {
+        files
+      } = response.data;
+      await Promise.all(Object.values(files).map(async fileObj => {
+        const fileName = fileObj.file_name;
+        const edxVideoId = fileObj.edx_video_id;
+        const uploadUrl = fileObj.upload_url;
+        const uploadFile = supportedFiles.find(file => file.get('file').name === fileName);
+        if (!uploadFile) {
+          console.error(`Could not find file object with name "${fileName}" in supportedFiles array.`);
+          return;
+        }
+        const formData = new FormData();
+        formData.append('uploaded-file', uploadFile.get('file'));
+        await fetch(uploadUrl, {
+          method: 'PUT',
+          body: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(() => postUploadRedirect(edxVideoId)).catch(error => console.error('Error uploading file:', error));
+      }));
+      setLoadSpinner(false);
+    }
+  }));
 };
 exports.uploadVideo = uploadVideo;
-var _default = {
+var _default = exports.default = {
   loadVideoData,
   determineVideoSources,
   parseLicense,
@@ -556,5 +530,4 @@ var _default = {
   uploadHandout,
   uploadVideo
 };
-exports.default = _default;
 //# sourceMappingURL=video.js.map

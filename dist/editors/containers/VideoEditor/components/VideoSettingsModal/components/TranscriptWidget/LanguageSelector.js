@@ -16,60 +16,50 @@ var _FileInput = require("../../../../../../sharedComponents/FileInput");
 var _messages = _interopRequireDefault(require("./messages"));
 var _module = _interopRequireWildcard(require("./LanguageSelector"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const hooks = {
-  onSelectLanguage: _ref => {
-    let {
-      dispatch,
-      languageBeforeChange,
-      triggerupload,
-      setLocalLang
-    } = _ref;
-    return _ref2 => {
-      let {
-        newLang
-      } = _ref2;
-      // IF Language is unset, set language and begin upload prompt.
-      setLocalLang(newLang);
-      if (languageBeforeChange === '') {
-        triggerupload();
-        return;
-      }
-      // Else: update language
-      dispatch(_redux.thunkActions.video.updateTranscriptLanguage({
-        newLanguageCode: newLang,
-        languageBeforeChange
-      }));
-    };
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const hooks = exports.hooks = {
+  onSelectLanguage: ({
+    dispatch,
+    languageBeforeChange,
+    triggerupload,
+    setLocalLang
+  }) => ({
+    newLang
+  }) => {
+    // IF Language is unset, set language and begin upload prompt.
+    setLocalLang(newLang);
+    if (languageBeforeChange === '') {
+      triggerupload();
+      return;
+    }
+    // Else: update language
+    dispatch(_redux.thunkActions.video.updateTranscriptLanguage({
+      newLanguageCode: newLang,
+      languageBeforeChange
+    }));
   },
-  addFileCallback: _ref3 => {
-    let {
-      dispatch,
-      localLang
-    } = _ref3;
-    return file => {
-      dispatch(_redux.thunkActions.video.uploadTranscript({
-        file,
-        filename: file.name,
-        language: localLang
-      }));
-    };
+  addFileCallback: ({
+    dispatch,
+    localLang
+  }) => file => {
+    dispatch(_redux.thunkActions.video.uploadTranscript({
+      file,
+      filename: file.name,
+      language: localLang
+    }));
   }
 };
-exports.hooks = hooks;
-const LanguageSelector = _ref4 => {
-  let {
-    index,
-    // For a unique id for the form control
-    language,
-    // Redux
-    openLanguages,
-    // Only allow those languages not already associated with a transcript to be selected
-    // intl
-    intl
-  } = _ref4;
+const LanguageSelector = ({
+  index,
+  // For a unique id for the form control
+  language,
+  // Redux
+  openLanguages,
+  // Only allow those languages not already associated with a transcript to be selected
+  // intl
+  intl
+}) => {
   const [localLang, setLocalLang] = _react.default.useState(language);
   const input = (0, _FileInput.fileInput)({
     onAddFile: hooks.addFileCallback({
@@ -108,8 +98,7 @@ const LanguageSelector = _ref4 => {
         variant: "outline-primary",
         children: getTitle()
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Dropdown.Menu, {
-        children: Object.entries(_video.videoTranscriptLanguages).map(_ref5 => {
-          let [lang, text] = _ref5;
+        children: Object.entries(_video.videoTranscriptLanguages).map(([lang, text]) => {
           if (language === lang) {
             return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Dropdown.Item, {
               children: [text, /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Icon, {
@@ -152,8 +141,6 @@ const mapStateToProps = state => ({
   openLanguages: _redux.selectors.video.openLanguages(state)
 });
 exports.mapStateToProps = mapStateToProps;
-const mapDispatchToProps = {};
-exports.mapDispatchToProps = mapDispatchToProps;
-var _default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LanguageSelector));
-exports.default = _default;
+const mapDispatchToProps = exports.mapDispatchToProps = {};
+var _default = exports.default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LanguageSelector));
 //# sourceMappingURL=LanguageSelector.js.map

@@ -10,7 +10,7 @@ var _ProblemEditor = _interopRequireDefault(require("./containers/ProblemEditor"
 var _VideoUploadEditor = _interopRequireDefault(require("./containers/VideoUploadEditor"));
 var _GameEditor = _interopRequireDefault(require("./containers/GameEditor"));
 var _app = require("./data/constants/app");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // ADDED_EDITOR_IMPORTS GO HERE
 
 const supportedEditors = {
@@ -21,6 +21,5 @@ const supportedEditors = {
   // ADDED_EDITORS GO BELOW
   [_app.blockTypes.game]: _GameEditor.default
 };
-var _default = supportedEditors;
-exports.default = _default;
+var _default = exports.default = supportedEditors;
 //# sourceMappingURL=supportedEditors.js.map

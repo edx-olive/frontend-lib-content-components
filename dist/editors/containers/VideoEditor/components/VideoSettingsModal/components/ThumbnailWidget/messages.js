@@ -62,6 +62,5 @@ const messages = (0, _i18n.defineMessages)({
     description: ' Message presented to user when file size of image is less than 2 KB or larger than 2 MB'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

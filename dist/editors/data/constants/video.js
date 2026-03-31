@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.videoTranscriptLanguages = exports.timeKeys = exports.in8lTranscriptLanguages = exports.default = void 0;
 var _utils = require("../../utils");
-const videoTranscriptLanguages = (0, _utils.StrictDict)({
+const videoTranscriptLanguages = exports.videoTranscriptLanguages = (0, _utils.StrictDict)({
   placeholder: '',
   aa: 'Afar',
   ab: 'Abkhazian',
@@ -194,7 +194,6 @@ const videoTranscriptLanguages = (0, _utils.StrictDict)({
   za: 'Zhuang',
   zu: 'Zulu'
 });
-exports.videoTranscriptLanguages = videoTranscriptLanguages;
 const in8lTranscriptLanguages = intl => {
   const messageLookup = {};
   // for tests and non-internationlized setups, return en
@@ -211,14 +210,12 @@ const in8lTranscriptLanguages = intl => {
   return messageLookup;
 };
 exports.in8lTranscriptLanguages = in8lTranscriptLanguages;
-const timeKeys = (0, _utils.StrictDict)({
+const timeKeys = exports.timeKeys = (0, _utils.StrictDict)({
   startTime: 'startTime',
   stopTime: 'stopTime'
 });
-exports.timeKeys = timeKeys;
-var _default = {
+var _default = exports.default = {
   timeKeys,
   videoTranscriptLanguages
 };
-exports.default = _default;
 //# sourceMappingURL=video.js.map

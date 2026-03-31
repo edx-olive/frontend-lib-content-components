@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.blockTypes = void 0;
 var _utils = require("../../utils");
 /* eslint-disable import/prefer-default-export */
-const blockTypes = (0, _utils.StrictDict)({
+const blockTypes = exports.blockTypes = (0, _utils.StrictDict)({
   html: 'html',
   video: 'video',
   problem: 'problem',
@@ -14,5 +14,4 @@ const blockTypes = (0, _utils.StrictDict)({
   video_upload: 'video_upload',
   game: 'game'
 });
-exports.blockTypes = blockTypes;
 //# sourceMappingURL=app.js.map

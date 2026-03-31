@@ -13,21 +13,20 @@ var _messages = _interopRequireDefault(require("./messages"));
 var _hooks = require("../../hooks");
 var _redux = require("../../data/redux");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /**
  * An error page that displays a generic message for unexpected errors.  Also contains a "Try
  * Again" button to refresh the page.
  */
-const ErrorPage = _ref => {
-  let {
-    message,
-    studioEndpointUrl,
-    learningContextId,
-    // redux
-    unitData,
-    // injected
-    intl
-  } = _ref;
+const ErrorPage = ({
+  message,
+  studioEndpointUrl,
+  learningContextId,
+  // redux
+  unitData,
+  // injected
+  intl
+}) => {
   const outlineType = learningContextId?.startsWith('library-v1') ? 'library' : 'course';
   const outlineUrl = `${studioEndpointUrl}/${outlineType}/${learningContextId}`;
   const unitUrl = unitData?.data ? `${studioEndpointUrl}/container/${unitData?.data.ancestors[0].id}` : null;
@@ -93,6 +92,5 @@ const mapStateToProps = state => ({
   unitData: _redux.selectors.app.unitUrl(state)
 });
 exports.mapStateToProps = mapStateToProps;
-var _default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps)(ErrorPage));
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps)(ErrorPage));
 //# sourceMappingURL=ErrorPage.js.map

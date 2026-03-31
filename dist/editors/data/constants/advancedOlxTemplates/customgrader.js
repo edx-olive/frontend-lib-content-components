@@ -10,7 +10,7 @@ exports.default = exports.customGrader = void 0;
 //     display_name: Custom Python-Evaluated Input
 //     markdown: !!null
 // data: |
-const customGrader = `<problem>
+const customGrader = exports.customGrader = `<problem>
     <p>
         In custom Python-evaluated input (also called "write-your-own-grader"
         problems), the grader uses a Python script that you create and embed in
@@ -85,7 +85,5 @@ def test_add(expect, ans):
         </solution>
     </customresponse>
 </problem>`;
-exports.customGrader = customGrader;
-var _default = customGrader;
-exports.default = _default;
+var _default = exports.default = customGrader;
 //# sourceMappingURL=customgrader.js.map

@@ -77,6 +77,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Label for Learn more about advanced problem types button'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

@@ -14,9 +14,8 @@ var _module = _interopRequireWildcard(require("."));
 var _redux = require("../../data/redux");
 var _requests = require("../../data/constants/requests");
 var _jsxRuntime = require("react/jsx-runtime");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /**
@@ -27,44 +26,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* eslint-disable no-unused-vars */
 
-const hooks = {
+const hooks = exports.hooks = {
   getContent: () => ({
     some: 'content'
   })
 };
-exports.hooks = hooks;
-const thumbEditor = _ref => {
-  let {
-    onClose,
-    // redux
-    blockValue,
-    lmsEndpointUrl,
-    blockFailed,
-    blockFinished,
-    initializeEditor,
-    // inject
-    intl
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditorContainer.default, {
-    getContent: _module.hooks.getContent,
-    onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: "editor-body h-75 overflow-auto",
-      children: !blockFinished ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: "text-center p-6",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Spinner, {
-          animation: "border",
-          className: "m-3"
-          // Use a messages.js file for intl messages.
-          ,
-          screenreadertext: intl.formatMessage('Loading Spinner')
-        })
-      }) : /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
-        children: ["Your Editor Goes here. You can get at the xblock data with the blockValue field. here is what is in your xblock:  ", JSON.stringify(blockValue)]
+const thumbEditor = ({
+  onClose,
+  // redux
+  blockValue,
+  lmsEndpointUrl,
+  blockFailed,
+  blockFinished,
+  initializeEditor,
+  // inject
+  intl
+}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_EditorContainer.default, {
+  getContent: _module.hooks.getContent,
+  onClose: onClose,
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: "editor-body h-75 overflow-auto",
+    children: !blockFinished ? /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "text-center p-6",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Spinner, {
+        animation: "border",
+        className: "m-3"
+        // Use a messages.js file for intl messages.
+        ,
+        screenreadertext: intl.formatMessage('Loading Spinner')
       })
+    }) : /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
+      children: ["Your Editor Goes here. You can get at the xblock data with the blockValue field. here is what is in your xblock:  ", JSON.stringify(blockValue)]
     })
-  });
-};
+  })
+});
 exports.thumbEditor = thumbEditor;
 thumbEditor.defaultProps = {
   blockValue: null,
@@ -96,10 +91,8 @@ const mapStateToProps = state => ({
   })
 });
 exports.mapStateToProps = mapStateToProps;
-const mapDispatchToProps = {
+const mapDispatchToProps = exports.mapDispatchToProps = {
   initializeEditor: _redux.actions.app.initializeEditor
 };
-exports.mapDispatchToProps = mapDispatchToProps;
-var _default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(thumbEditor));
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(thumbEditor));
 //# sourceMappingURL=example.js.map

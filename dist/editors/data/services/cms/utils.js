@@ -10,9 +10,7 @@ var _auth = require("@edx/frontend-platform/auth");
  * simple wrapper providing an authenticated Http client get action
  * @param {string} url - target url
  */
-const get = function () {
-  return (0, _auth.getAuthenticatedHttpClient)().get(...arguments);
-};
+const get = (...args) => (0, _auth.getAuthenticatedHttpClient)().get(...args);
 /**
  * post(url, data)
  * simple wrapper providing an authenticated Http client post action
@@ -20,9 +18,7 @@ const get = function () {
  * @param {object|string} data - post payload
  */
 exports.get = get;
-const post = function () {
-  return (0, _auth.getAuthenticatedHttpClient)().post(...arguments);
-};
+const post = (...args) => (0, _auth.getAuthenticatedHttpClient)().post(...args);
 /**
  * delete(url, data)
  * simple wrapper providing an authenticated Http client delete action
@@ -30,10 +26,7 @@ const post = function () {
  * @param {object|string} data - delete payload
  */
 exports.post = post;
-const deleteObject = function () {
-  return (0, _auth.getAuthenticatedHttpClient)().delete(...arguments);
-};
+const deleteObject = (...args) => (0, _auth.getAuthenticatedHttpClient)().delete(...args);
 exports.deleteObject = deleteObject;
-const client = _auth.getAuthenticatedHttpClient;
-exports.client = client;
+const client = exports.client = _auth.getAuthenticatedHttpClient;
 //# sourceMappingURL=utils.js.map

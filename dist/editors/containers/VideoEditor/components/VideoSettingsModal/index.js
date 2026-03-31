@@ -21,41 +21,37 @@ require("./index.scss");
 var _SocialShareWidget = _interopRequireDefault(require("./components/SocialShareWidget"));
 var _messages = _interopRequireDefault(require("../../messages"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); } // import VideoPreview from './components/VideoPreview';
-const VideoSettingsModal = _ref => {
-  let {
-    onReturn,
-    isLibrary
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [!isLibrary && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Button, {
-      variant: "link",
-      className: "text-primary-500",
-      size: "sm",
-      onClick: onReturn,
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } // import VideoPreview from './components/VideoPreview';
+const VideoSettingsModal = ({
+  onReturn,
+  isLibrary
+}) => /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+  children: [!isLibrary && /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Button, {
+    variant: "link",
+    className: "text-primary-500",
+    size: "sm",
+    onClick: onReturn,
+    style: {
+      textDecoration: 'none',
+      marginLeft: '3px'
+    },
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Icon, {
+      src: _icons.ArrowBackIos,
       style: {
-        textDecoration: 'none',
-        marginLeft: '3px'
-      },
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Icon, {
-        src: _icons.ArrowBackIos,
-        style: {
-          height: '13px'
-        }
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_i18n.FormattedMessage, _objectSpread({}, _messages.default.replaceVideoButtonLabel))]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorSummary.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoPreviewWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoSourceWidget.default, {}), !isLibrary && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SocialShareWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThumbnailWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TranscriptWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DurationWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HandoutWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LicenseWidget.default, {})]
-  });
-};
+        height: '13px'
+      }
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_i18n.FormattedMessage, _objectSpread({}, _messages.default.replaceVideoButtonLabel))]
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorSummary.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoPreviewWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoSourceWidget.default, {}), !isLibrary && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SocialShareWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThumbnailWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TranscriptWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DurationWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HandoutWidget.default, {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LicenseWidget.default, {})]
+});
 exports.VideoSettingsModal = VideoSettingsModal;
 VideoSettingsModal.propTypes = {
   onReturn: _propTypes.default.func.isRequired,
   isLibrary: _propTypes.default.func.isRequired
 };
-var _default = (0, _i18n.injectIntl)(VideoSettingsModal);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(VideoSettingsModal);
 //# sourceMappingURL=index.js.map

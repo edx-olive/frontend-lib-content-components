@@ -12,8 +12,8 @@ var _numericalInput = _interopRequireDefault(require("../images/numericalInput.p
 var _textInput = _interopRequireDefault(require("../images/textInput.png"));
 var _advancedOlxTemplates = _interopRequireDefault(require("./advancedOlxTemplates"));
 var _basicOlxTemplates = _interopRequireDefault(require("./basicOlxTemplates"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const ProblemTypeKeys = (0, _utils.StrictDict)({
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const ProblemTypeKeys = exports.ProblemTypeKeys = (0, _utils.StrictDict)({
   SINGLESELECT: 'multiplechoiceresponse',
   MULTISELECT: 'choiceresponse',
   DROPDOWN: 'optionresponse',
@@ -21,8 +21,7 @@ const ProblemTypeKeys = (0, _utils.StrictDict)({
   TEXTINPUT: 'stringresponse',
   ADVANCED: 'advanced'
 });
-exports.ProblemTypeKeys = ProblemTypeKeys;
-const ProblemTypes = (0, _utils.StrictDict)({
+const ProblemTypes = exports.ProblemTypes = (0, _utils.StrictDict)({
   [ProblemTypeKeys.SINGLESELECT]: {
     title: 'Single select',
     preview: _singleSelect.default,
@@ -80,8 +79,7 @@ const ProblemTypes = (0, _utils.StrictDict)({
     helpLink: 'something.com'
   }
 });
-exports.ProblemTypes = ProblemTypes;
-const AdvanceProblemKeys = (0, _utils.StrictDict)({
+const AdvanceProblemKeys = exports.AdvanceProblemKeys = (0, _utils.StrictDict)({
   BLANK: 'blankadvanced',
   CIRCUITSCHEMATIC: 'circuitschematic',
   JSINPUT: 'jsinputresponse',
@@ -90,8 +88,7 @@ const AdvanceProblemKeys = (0, _utils.StrictDict)({
   FORMULA: 'formularesponse',
   PROBLEMWITHHINT: 'problemwithhint'
 });
-exports.AdvanceProblemKeys = AdvanceProblemKeys;
-const AdvanceProblems = (0, _utils.StrictDict)({
+const AdvanceProblems = exports.AdvanceProblems = (0, _utils.StrictDict)({
   [AdvanceProblemKeys.BLANK]: {
     title: 'Blank problem',
     status: '',
@@ -128,8 +125,7 @@ const AdvanceProblems = (0, _utils.StrictDict)({
     template: _advancedOlxTemplates.default.problemWithHint
   }
 });
-exports.AdvanceProblems = AdvanceProblems;
-const ShowAnswerTypesKeys = (0, _utils.StrictDict)({
+const ShowAnswerTypesKeys = exports.ShowAnswerTypesKeys = (0, _utils.StrictDict)({
   ALWAYS: 'always',
   ANSWERED: 'answered',
   ATTEMPTED: 'attempted',
@@ -143,8 +139,7 @@ const ShowAnswerTypesKeys = (0, _utils.StrictDict)({
   AFTER_ALL_ATTEMPTS_OR_CORRECT: 'after_all_attempts_or_correct',
   ATTEMPTED_NO_PAST_DUE: 'attempted_no_past_due'
 });
-exports.ShowAnswerTypesKeys = ShowAnswerTypesKeys;
-const ShowAnswerTypes = (0, _utils.StrictDict)({
+const ShowAnswerTypes = exports.ShowAnswerTypes = (0, _utils.StrictDict)({
   [ShowAnswerTypesKeys.ALWAYS]: {
     id: 'authoring.problemeditor.settings.showanswertype.always',
     defaultMessage: 'Always'
@@ -194,15 +189,13 @@ const ShowAnswerTypes = (0, _utils.StrictDict)({
     defaultMessage: 'Attempted'
   }
 });
-exports.ShowAnswerTypes = ShowAnswerTypes;
-const RandomizationTypesKeys = (0, _utils.StrictDict)({
+const RandomizationTypesKeys = exports.RandomizationTypesKeys = (0, _utils.StrictDict)({
   NEVER: 'never',
   ALWAYS: 'always',
   ONRESET: 'on_reset',
   PERSTUDENT: 'per_student'
 });
-exports.RandomizationTypesKeys = RandomizationTypesKeys;
-const RandomizationTypes = (0, _utils.StrictDict)({
+const RandomizationTypes = exports.RandomizationTypes = (0, _utils.StrictDict)({
   [RandomizationTypesKeys.ALWAYS]: {
     id: 'authoring.problemeditor.settings.RandomizationTypes.always',
     defaultMessage: 'Always'
@@ -220,9 +213,6 @@ const RandomizationTypes = (0, _utils.StrictDict)({
     defaultMessage: 'Per Student'
   }
 });
-exports.RandomizationTypes = RandomizationTypes;
-const RichTextProblems = [ProblemTypeKeys.SINGLESELECT, ProblemTypeKeys.MULTISELECT];
-exports.RichTextProblems = RichTextProblems;
-const settingsOlxAttributes = ['@_display_name', '@_weight', '@_max_atempts', '@_showanswer', '@_show_reset_button', '@_submission_wait_seconds', '@_attempts_before_showanswer_button'];
-exports.settingsOlxAttributes = settingsOlxAttributes;
+const RichTextProblems = exports.RichTextProblems = [ProblemTypeKeys.SINGLESELECT, ProblemTypeKeys.MULTISELECT];
+const settingsOlxAttributes = exports.settingsOlxAttributes = ['@_display_name', '@_weight', '@_max_atempts', '@_showanswer', '@_show_reset_button', '@_submission_wait_seconds', '@_attempts_before_showanswer_button'];
 //# sourceMappingURL=problem.js.map

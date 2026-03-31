@@ -12,19 +12,18 @@ var _problem = require("../../../../../../data/constants/problem");
 var _messages = _interopRequireDefault(require("../messages"));
 var _TypeRow = _interopRequireDefault(require("./TypeRow"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const TypeCard = _ref => {
-  let {
-    answers,
-    blockTitle,
-    correctAnswerCount,
-    problemType,
-    setBlockTitle,
-    updateField,
-    updateAnswer,
-    // inject
-    intl
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const TypeCard = ({
+  answers,
+  blockTitle,
+  correctAnswerCount,
+  problemType,
+  setBlockTitle,
+  updateField,
+  updateAnswer,
+  // inject
+  intl
+}) => {
   const problemTypeKeysArray = Object.values(_problem.ProblemTypeKeys).filter(key => key !== _problem.ProblemTypeKeys.ADVANCED);
   if (problemType === _problem.ProblemTypeKeys.ADVANCED) {
     return null;
@@ -65,6 +64,5 @@ TypeCard.propTypes = {
   // injected
   intl: _i18n.intlShape.isRequired
 };
-var _default = (0, _i18n.injectIntl)(TypeCard);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(TypeCard);
 //# sourceMappingURL=TypeCard.js.map

@@ -17,5 +17,5 @@ Object.defineProperty(exports, "FeedbackControl", {
 });
 var _FeedbackBox = _interopRequireDefault(require("./FeedbackBox"));
 var _FeedbackControl = _interopRequireDefault(require("./FeedbackControl"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 //# sourceMappingURL=index.js.map

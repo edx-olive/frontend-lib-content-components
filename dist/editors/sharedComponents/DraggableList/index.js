@@ -12,7 +12,6 @@ Object.defineProperty(exports, "SortableItem", {
 exports.default = void 0;
 var _DraggableList = _interopRequireDefault(require("./DraggableList"));
 var _SortableItem = _interopRequireDefault(require("./SortableItem"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-var _default = _DraggableList.default;
-exports.default = _default;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var _default = exports.default = _DraggableList.default;
 //# sourceMappingURL=index.js.map

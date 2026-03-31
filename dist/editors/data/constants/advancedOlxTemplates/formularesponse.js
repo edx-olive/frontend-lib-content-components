@@ -10,7 +10,7 @@ exports.formulaResponse = exports.default = void 0;
 //     display_name: Math Expression Input
 //     markdown: !!null
 // data: |
-const formulaResponse = `<problem>
+const formulaResponse = exports.formulaResponse = `<problem>
     <formularesponse type="ci" samples="R_1,R_2,R_3@1,2,3:3,4,5#10" answer="R_1*R_2/R_3">
         <p>You can use this template as a guide to the OLX markup to use for math expression problems. Edit this component to replace the example with your own assessment.</p>
         <label>Add the question text, or prompt, here. This text is required. Example: Write an expression for the product of R_1, R_2, and the inverse of R_3.</label>
@@ -19,7 +19,5 @@ const formulaResponse = `<problem>
         <formulaequationinput size="40"/>
     </formularesponse>
 </problem>`;
-exports.formulaResponse = formulaResponse;
-var _default = formulaResponse;
-exports.default = _default;
+var _default = exports.default = formulaResponse;
 //# sourceMappingURL=formularesponse.js.map

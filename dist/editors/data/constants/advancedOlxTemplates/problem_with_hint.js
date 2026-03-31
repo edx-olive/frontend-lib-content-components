@@ -10,7 +10,7 @@ exports.problemWithHint = exports.default = void 0;
 //     display_name: Problem with Adaptive Hint
 //     markdown: !!null
 // data: |
-const problemWithHint = `<problem>
+const problemWithHint = exports.problemWithHint = `<problem>
     <text>
         <p><h4>Problem With Adaptive Hint</h4></p>
         <p>This problem demonstrates a question with hints, based on using the <tt class="tt">hintfn</tt> method. </p>
@@ -50,7 +50,5 @@ def hint_fn(answer_ids, student_answers, new_cmap, old_cmap):
         </customresponse>
     </text>
 </problem>`;
-exports.problemWithHint = problemWithHint;
-var _default = problemWithHint;
-exports.default = _default;
+var _default = exports.default = problemWithHint;
 //# sourceMappingURL=problem_with_hint.js.map

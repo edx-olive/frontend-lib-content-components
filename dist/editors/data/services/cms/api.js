@@ -10,90 +10,67 @@ var _utils2 = require("./utils");
 var _module = _interopRequireWildcard(require("./api"));
 var mockApi = _interopRequireWildcard(require("./mockApi"));
 var _hooks = require("../../../containers/VideoEditor/components/VideoSettingsModal/components/DurationWidget/hooks");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-const apiMethods = {
-  fetchBlockById: _ref => {
-    let {
-      blockId,
-      studioEndpointUrl
-    } = _ref;
-    return (0, _utils2.get)(urls.block({
-      blockId,
-      studioEndpointUrl
-    }));
-  },
-  fetchByUnitId: _ref2 => {
-    let {
-      blockId,
-      studioEndpointUrl
-    } = _ref2;
-    return (0, _utils2.get)(urls.blockAncestor({
-      studioEndpointUrl,
-      blockId
-    }));
-  },
-  fetchStudioView: _ref3 => {
-    let {
-      blockId,
-      studioEndpointUrl
-    } = _ref3;
-    return (0, _utils2.get)(urls.blockStudioView({
-      studioEndpointUrl,
-      blockId
-    }));
-  },
-  fetchAssets: _ref4 => {
-    let {
-      learningContextId,
-      studioEndpointUrl
-    } = _ref4;
-    return (0, _utils2.get)(urls.courseAssets({
-      studioEndpointUrl,
-      learningContextId
-    }));
-  },
-  fetchVideos: _ref5 => {
-    let {
-      studioEndpointUrl,
-      learningContextId
-    } = _ref5;
-    return (0, _utils2.get)(urls.courseVideos({
-      studioEndpointUrl,
-      learningContextId
-    }));
-  },
-  fetchCourseDetails: _ref6 => {
-    let {
-      studioEndpointUrl,
-      learningContextId
-    } = _ref6;
-    return (0, _utils2.get)(urls.courseDetailsUrl({
-      studioEndpointUrl,
-      learningContextId
-    }));
-  },
-  fetchAdvancedSettings: _ref7 => {
-    let {
-      studioEndpointUrl,
-      learningContextId
-    } = _ref7;
-    return (0, _utils2.get)(urls.courseAdvanceSettings({
-      studioEndpointUrl,
-      learningContextId
-    }));
-  },
-  uploadAsset: _ref8 => {
-    let {
-      learningContextId,
-      studioEndpointUrl,
-      asset
-    } = _ref8;
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+const apiMethods = exports.apiMethods = {
+  fetchBlockById: ({
+    blockId,
+    studioEndpointUrl
+  }) => (0, _utils2.get)(urls.block({
+    blockId,
+    studioEndpointUrl
+  })),
+  fetchByUnitId: ({
+    blockId,
+    studioEndpointUrl
+  }) => (0, _utils2.get)(urls.blockAncestor({
+    studioEndpointUrl,
+    blockId
+  })),
+  fetchStudioView: ({
+    blockId,
+    studioEndpointUrl
+  }) => (0, _utils2.get)(urls.blockStudioView({
+    studioEndpointUrl,
+    blockId
+  })),
+  fetchAssets: ({
+    learningContextId,
+    studioEndpointUrl
+  }) => (0, _utils2.get)(urls.courseAssets({
+    studioEndpointUrl,
+    learningContextId
+  })),
+  fetchVideos: ({
+    studioEndpointUrl,
+    learningContextId
+  }) => (0, _utils2.get)(urls.courseVideos({
+    studioEndpointUrl,
+    learningContextId
+  })),
+  fetchCourseDetails: ({
+    studioEndpointUrl,
+    learningContextId
+  }) => (0, _utils2.get)(urls.courseDetailsUrl({
+    studioEndpointUrl,
+    learningContextId
+  })),
+  fetchAdvancedSettings: ({
+    studioEndpointUrl,
+    learningContextId
+  }) => (0, _utils2.get)(urls.courseAdvanceSettings({
+    studioEndpointUrl,
+    learningContextId
+  })),
+  uploadAsset: ({
+    learningContextId,
+    studioEndpointUrl,
+    asset
+  }) => {
     const data = new FormData();
     data.append('file', asset);
     return (0, _utils2.post)(urls.courseAssets({
@@ -101,13 +78,12 @@ const apiMethods = {
       learningContextId
     }), data);
   },
-  uploadThumbnail: _ref9 => {
-    let {
-      studioEndpointUrl,
-      learningContextId,
-      videoId,
-      thumbnail
-    } = _ref9;
+  uploadThumbnail: ({
+    studioEndpointUrl,
+    learningContextId,
+    videoId,
+    thumbnail
+  }) => {
     const data = new FormData();
     data.append('file', thumbnail);
     return (0, _utils2.post)(urls.thumbnailUpload({
@@ -116,38 +92,35 @@ const apiMethods = {
       videoId
     }), data);
   },
-  checkTranscriptsForImport: _ref10 => {
-    let {
-      studioEndpointUrl,
-      blockId,
-      youTubeId,
-      videoId
-    } = _ref10;
+  checkTranscriptsForImport: ({
+    studioEndpointUrl,
+    blockId,
+    youTubeId,
+    videoId
+  }) => {
     const getJSON = `{"locator":"${blockId}","videos":[{"mode":"youtube","video":"${youTubeId}","type":"youtube"},{"mode":"edx_video_id","type":"edx_video_id","video":"${videoId}"}]}`;
     return (0, _utils2.get)(urls.checkTranscriptsForImport({
       studioEndpointUrl,
       parameters: encodeURIComponent(getJSON)
     }));
   },
-  importTranscript: _ref11 => {
-    let {
-      studioEndpointUrl,
-      blockId,
-      youTubeId
-    } = _ref11;
+  importTranscript: ({
+    studioEndpointUrl,
+    blockId,
+    youTubeId
+  }) => {
     const getJSON = `{"locator":"${blockId}","videos":[{"mode":"youtube","video":"${youTubeId}","type":"youtube"}]}`;
     return (0, _utils2.get)(urls.replaceTranscript({
       studioEndpointUrl,
       parameters: encodeURIComponent(getJSON)
     }));
   },
-  getTranscript: _ref12 => {
-    let {
-      studioEndpointUrl,
-      language,
-      blockId,
-      videoId
-    } = _ref12;
+  getTranscript: ({
+    studioEndpointUrl,
+    language,
+    blockId,
+    videoId
+  }) => {
     const getJSON = {
       data: {
         lang: language,
@@ -159,14 +132,13 @@ const apiMethods = {
       blockId
     })}?language_code=${language}`, getJSON);
   },
-  deleteTranscript: _ref13 => {
-    let {
-      studioEndpointUrl,
-      language,
-      blockId,
-      videoId,
-      action
-    } = _ref13;
+  deleteTranscript: ({
+    studioEndpointUrl,
+    language,
+    blockId,
+    videoId,
+    action
+  }) => {
     const data = {
       lang: language,
       edx_video_id: videoId
@@ -181,15 +153,14 @@ const apiMethods = {
       data
     });
   },
-  uploadTranscript: _ref14 => {
-    let {
-      blockId,
-      studioEndpointUrl,
-      transcript,
-      videoId,
-      language,
-      newLanguage = null
-    } = _ref14;
+  uploadTranscript: ({
+    blockId,
+    studioEndpointUrl,
+    transcript,
+    videoId,
+    language,
+    newLanguage = null
+  }) => {
     const data = new FormData();
     data.append('file', transcript);
     data.append('edx_video_id', videoId);
@@ -200,14 +171,13 @@ const apiMethods = {
       blockId
     }), data);
   },
-  normalizeContent: _ref15 => {
-    let {
-      blockId,
-      blockType,
-      content,
-      learningContextId,
-      title
-    } = _ref15;
+  normalizeContent: ({
+    blockId,
+    blockType,
+    content,
+    learningContextId,
+    title
+  }) => {
     let response = {};
     if (blockType === 'html') {
       response = {
@@ -269,47 +239,37 @@ const apiMethods = {
     }
     return _objectSpread({}, response);
   },
-  saveBlock: _ref16 => {
-    let {
-      blockId,
-      blockType,
-      content,
-      learningContextId,
-      studioEndpointUrl,
-      title
-    } = _ref16;
-    return (0, _utils2.post)(urls.block({
-      studioEndpointUrl,
-      blockId
-    }), _module.apiMethods.normalizeContent({
-      blockType,
-      content,
-      blockId,
-      learningContextId,
-      title
-    }));
-  },
-  fetchVideoFeatures: _ref17 => {
-    let {
-      studioEndpointUrl
-    } = _ref17;
-    return (0, _utils2.get)(urls.videoFeatures({
-      studioEndpointUrl
-    }));
-  },
-  uploadVideo: _ref18 => {
-    let {
-      data,
-      studioEndpointUrl,
-      learningContextId
-    } = _ref18;
-    return (0, _utils2.post)(urls.courseVideos({
-      studioEndpointUrl,
-      learningContextId
-    }), data);
-  }
+  saveBlock: ({
+    blockId,
+    blockType,
+    content,
+    learningContextId,
+    studioEndpointUrl,
+    title
+  }) => (0, _utils2.post)(urls.block({
+    studioEndpointUrl,
+    blockId
+  }), _module.apiMethods.normalizeContent({
+    blockType,
+    content,
+    blockId,
+    learningContextId,
+    title
+  })),
+  fetchVideoFeatures: ({
+    studioEndpointUrl
+  }) => (0, _utils2.get)(urls.videoFeatures({
+    studioEndpointUrl
+  })),
+  uploadVideo: ({
+    data,
+    studioEndpointUrl,
+    learningContextId
+  }) => (0, _utils2.post)(urls.courseVideos({
+    studioEndpointUrl,
+    learningContextId
+  }), data)
 };
-exports.apiMethods = apiMethods;
 const loadImage = imageData => _objectSpread(_objectSpread({}, imageData), {}, {
   dateAdded: new Date(imageData.dateAdded.replace(' at', '')).getTime()
 });
@@ -318,12 +278,11 @@ const loadImages = rawImages => (0, _utils.camelizeKeys)(rawImages).reduce((obj,
   [image.id]: _module.loadImage(image)
 }), {});
 exports.loadImages = loadImages;
-const processVideoIds = _ref19 => {
-  let {
-    videoId,
-    videoUrl,
-    fallbackVideos
-  } = _ref19;
+const processVideoIds = ({
+  videoId,
+  videoUrl,
+  fallbackVideos
+}) => {
   let youtubeId = '';
   const html5Sources = [];
   if (videoUrl) {
@@ -376,8 +335,7 @@ const checkMockApi = key => {
   return _module.apiMethods[key];
 };
 exports.checkMockApi = checkMockApi;
-var _default = Object.keys(apiMethods).reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
+var _default = exports.default = Object.keys(apiMethods).reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
   [key]: checkMockApi(key)
 }), {});
-exports.default = _default;
 //# sourceMappingURL=api.js.map

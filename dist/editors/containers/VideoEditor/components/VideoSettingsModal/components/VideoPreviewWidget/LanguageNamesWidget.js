@@ -12,12 +12,11 @@ var _react = _interopRequireDefault(require("react"));
 var _messages = _interopRequireDefault(require("../messages"));
 var _TranscriptWidget = require("../TranscriptWidget");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const LanguageNamesWidget = _ref => {
-  let {
-    transcripts,
-    intl
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const LanguageNamesWidget = ({
+  transcripts,
+  intl
+}) => {
   let icon = _icons.ClosedCaptionOff;
   const hasTranscripts = _TranscriptWidget.hooks.hasTranscripts(transcripts);
   let message = intl.formatMessage(_messages.default.noTranscriptsAdded);
@@ -41,6 +40,5 @@ LanguageNamesWidget.propTypes = {
   intl: _i18n.intlShape.isRequired,
   transcripts: _propTypes.default.arrayOf(_propTypes.default.string).isRequired
 };
-var _default = (0, _i18n.injectIntl)(LanguageNamesWidget);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(LanguageNamesWidget);
 //# sourceMappingURL=LanguageNamesWidget.js.map

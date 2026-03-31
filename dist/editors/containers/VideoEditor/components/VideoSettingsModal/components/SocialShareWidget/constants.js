@@ -4,10 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.analyticsEvents = void 0;
-const analyticsEvents = {
+const analyticsEvents = exports.analyticsEvents = {
   socialSharingSettingChanged: 'edx.social.video_sharing_setting.changed'
 };
-exports.analyticsEvents = analyticsEvents;
-var _default = analyticsEvents;
-exports.default = _default;
+var _default = exports.default = analyticsEvents;
 //# sourceMappingURL=constants.js.map

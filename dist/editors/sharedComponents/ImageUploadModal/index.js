@@ -14,25 +14,23 @@ var _module = _interopRequireWildcard(require("."));
 var _hooks = require("../TinyMceWidget/hooks");
 var _jsxRuntime = require("react/jsx-runtime");
 const _excluded = ["close"];
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (-1 !== e.indexOf(n)) continue; t[n] = r[n]; } return t; }
 const propsString = props => Object.keys(props).map(key => `${key}="${props[key]}"`).join(' ');
 exports.propsString = propsString;
-const imgProps = _ref => {
-  let {
-    settings,
-    selection,
-    lmsEndpointUrl,
-    editorType
-  } = _ref;
+const imgProps = ({
+  settings,
+  selection,
+  lmsEndpointUrl,
+  editorType
+}) => {
   let url = selection?.externalUrl;
   if (url?.startsWith(lmsEndpointUrl) && editorType !== 'expandable') {
     const sourceEndIndex = lmsEndpointUrl.length;
@@ -46,14 +44,13 @@ const imgProps = _ref => {
   };
 };
 exports.imgProps = imgProps;
-const saveToEditor = _ref2 => {
-  let {
-    settings,
-    selection,
-    lmsEndpointUrl,
-    editorType,
-    editorRef
-  } = _ref2;
+const saveToEditor = ({
+  settings,
+  selection,
+  lmsEndpointUrl,
+  editorType,
+  editorRef
+}) => {
   const newImgTag = _module.hooks.imgTag({
     settings,
     selection,
@@ -63,14 +60,13 @@ const saveToEditor = _ref2 => {
   editorRef.current.execCommand(_tinyMCE.default.commands.insertContent, false, newImgTag);
 };
 exports.saveToEditor = saveToEditor;
-const updateImagesRef = _ref3 => {
-  let {
-    images,
-    selection,
-    height,
-    width,
-    newImage
-  } = _ref3;
+const updateImagesRef = ({
+  images,
+  selection,
+  height,
+  width,
+  newImage
+}) => {
   const {
     result: mappedImages,
     foundMatch: imageAlreadyExists
@@ -83,13 +79,12 @@ const updateImagesRef = _ref3 => {
   images.current = imageAlreadyExists ? mappedImages : [...images.current, newImage];
 };
 exports.updateImagesRef = updateImagesRef;
-const updateReactState = _ref4 => {
-  let {
-    settings,
-    selection,
-    setSelection,
-    images
-  } = _ref4;
+const updateReactState = ({
+  settings,
+  selection,
+  setSelection,
+  images
+}) => {
   const {
     height,
     width
@@ -110,12 +105,12 @@ const updateReactState = _ref4 => {
   setSelection(newImage);
 };
 exports.updateReactState = updateReactState;
-const hooks = {
-  createSaveCallback: _ref5 => {
+const hooks = exports.hooks = {
+  createSaveCallback: _ref => {
     let {
         close
-      } = _ref5,
-      args = _objectWithoutProperties(_ref5, _excluded);
+      } = _ref,
+      args = _objectWithoutProperties(_ref, _excluded);
     return settings => {
       saveToEditor(_objectSpread({
         settings
@@ -126,23 +121,19 @@ const hooks = {
       close();
     };
   },
-  onClose: _ref6 => {
-    let {
-      clearSelection,
-      close
-    } = _ref6;
-    return () => {
-      clearSelection();
-      close();
-    };
+  onClose: ({
+    clearSelection,
+    close
+  }) => () => {
+    clearSelection();
+    close();
   },
-  imgTag: _ref7 => {
-    let {
-      settings,
-      selection,
-      lmsEndpointUrl,
-      editorType
-    } = _ref7;
+  imgTag: ({
+    settings,
+    selection,
+    lmsEndpointUrl,
+    editorType
+  }) => {
     const props = _module.imgProps({
       settings,
       selection,
@@ -157,20 +148,18 @@ const hooks = {
   imgProps,
   propsString
 };
-exports.hooks = hooks;
-const ImageUploadModal = _ref8 => {
-  let {
-    // eslint-disable-next-line
-    editorRef,
-    isOpen,
-    close,
-    clearSelection,
-    selection,
-    setSelection,
-    images,
-    editorType,
-    lmsEndpointUrl
-  } = _ref8;
+const ImageUploadModal = ({
+  // eslint-disable-next-line
+  editorRef,
+  isOpen,
+  close,
+  clearSelection,
+  selection,
+  setSelection,
+  images,
+  editorType,
+  lmsEndpointUrl
+}) => {
   if (selection && selection.externalUrl) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ImageSettingsModal.default, {
       isOpen,
@@ -226,6 +215,5 @@ ImageUploadModal.propTypes = {
   lmsEndpointUrl: _propTypes.default.string.isRequired,
   editorType: _propTypes.default.string
 };
-var _default = (0, _i18n.injectIntl)(ImageUploadModal);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(ImageUploadModal);
 //# sourceMappingURL=index.js.map

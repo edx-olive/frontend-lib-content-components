@@ -15,13 +15,12 @@ var _hooks = require("./hooks");
 var _messages = _interopRequireDefault(require("./messages"));
 var _EditableHeader = _interopRequireDefault(require("./EditableHeader"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const TitleHeader = _ref => {
-  let {
-    isInitialized,
-    // injected
-    intl
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const TitleHeader = ({
+  isInitialized,
+  // injected
+  intl
+}) => {
   if (!isInitialized) {
     return intl.formatMessage(_messages.default.loading);
   }
@@ -72,6 +71,5 @@ TitleHeader.propTypes = {
   // injected
   intl: _i18n.intlShape.isRequired
 };
-var _default = (0, _i18n.injectIntl)(TitleHeader);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(TitleHeader);
 //# sourceMappingURL=index.js.map

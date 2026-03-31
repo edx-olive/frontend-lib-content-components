@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _paragon = require("@edx/paragon");
 var _CodeEditor = _interopRequireDefault(require("../CodeEditor"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function getValue(content) {
   if (!content) {
     return null;
@@ -19,12 +19,11 @@ function getValue(content) {
   }
   return content.data?.data;
 }
-const RawEditor = _ref => {
-  let {
-    editorRef,
-    content,
-    lang
-  } = _ref;
+const RawEditor = ({
+  editorRef,
+  content,
+  lang
+}) => {
   const value = getValue(content);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     children: [lang === 'xml' ? null : /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Alert, {
@@ -56,6 +55,5 @@ RawEditor.propTypes = {
   })]),
   lang: _propTypes.default.string
 };
-var _default = RawEditor;
-exports.default = _default;
+var _default = exports.default = RawEditor;
 //# sourceMappingURL=index.js.map

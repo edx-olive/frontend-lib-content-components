@@ -20,6 +20,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Description of Possibilities for value in Randomization widget'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

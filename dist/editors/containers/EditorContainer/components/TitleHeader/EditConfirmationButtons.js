@@ -11,30 +11,27 @@ var _icons = require("@edx/paragon/icons");
 var _i18n = require("@edx/frontend-platform/i18n");
 var _messages = _interopRequireDefault(require("./messages"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const EditConfirmationButtons = _ref => {
-  let {
-    updateTitle,
-    cancelEdit,
-    // injected
-    intl
-  } = _ref;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.ButtonGroup, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.IconButtonWithTooltip, {
-      tooltipPlacement: "left",
-      tooltipContent: intl.formatMessage(_messages.default.saveTitleEdit),
-      src: _icons.Check,
-      iconAs: _paragon.Icon,
-      onClick: updateTitle
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.IconButtonWithTooltip, {
-      tooltipPlacement: "right",
-      tooltipContent: intl.formatMessage(_messages.default.cancelTitleEdit),
-      src: _icons.Close,
-      iconAs: _paragon.Icon,
-      onClick: cancelEdit
-    })]
-  });
-};
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const EditConfirmationButtons = ({
+  updateTitle,
+  cancelEdit,
+  // injected
+  intl
+}) => /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.ButtonGroup, {
+  children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.IconButtonWithTooltip, {
+    tooltipPlacement: "left",
+    tooltipContent: intl.formatMessage(_messages.default.saveTitleEdit),
+    src: _icons.Check,
+    iconAs: _paragon.Icon,
+    onClick: updateTitle
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.IconButtonWithTooltip, {
+    tooltipPlacement: "right",
+    tooltipContent: intl.formatMessage(_messages.default.cancelTitleEdit),
+    src: _icons.Close,
+    iconAs: _paragon.Icon,
+    onClick: cancelEdit
+  })]
+});
 exports.EditConfirmationButtons = EditConfirmationButtons;
 EditConfirmationButtons.propTypes = {
   updateTitle: _propTypes.default.func.isRequired,
@@ -42,6 +39,5 @@ EditConfirmationButtons.propTypes = {
   // injected
   intl: _i18n.intlShape.isRequired
 };
-var _default = (0, _i18n.injectIntl)(EditConfirmationButtons);
-exports.default = _default;
+var _default = exports.default = (0, _i18n.injectIntl)(EditConfirmationButtons);
 //# sourceMappingURL=EditConfirmationButtons.js.map

@@ -13,19 +13,18 @@ var _messages = _interopRequireDefault(require("./messages"));
 var _requests = require("../../../data/constants/requests");
 var _redux = require("../../../data/redux");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const SelectImageModal = _ref => {
-  let {
-    isOpen,
-    close,
-    setSelection,
-    clearSelection,
-    images,
-    // redux
-    isLoaded,
-    isFetchError,
-    isUploadError
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const SelectImageModal = ({
+  isOpen,
+  close,
+  setSelection,
+  clearSelection,
+  images,
+  // redux
+  isLoaded,
+  isFetchError,
+  isUploadError
+}) => {
   const {
     galleryError,
     inputError,
@@ -85,8 +84,6 @@ const mapStateToProps = state => ({
   })
 });
 exports.mapStateToProps = mapStateToProps;
-const mapDispatchToProps = {};
-exports.mapDispatchToProps = mapDispatchToProps;
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectImageModal);
-exports.default = _default;
+const mapDispatchToProps = exports.mapDispatchToProps = {};
+var _default = exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectImageModal);
 //# sourceMappingURL=index.js.map

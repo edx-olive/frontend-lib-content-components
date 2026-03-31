@@ -52,6 +52,5 @@ class ReactStateSettingsParser {
     return rawOlxSettings;
   }
 }
-var _default = ReactStateSettingsParser;
-exports.default = _default;
+var _default = exports.default = ReactStateSettingsParser;
 //# sourceMappingURL=ReactStateSettingsParser.js.map

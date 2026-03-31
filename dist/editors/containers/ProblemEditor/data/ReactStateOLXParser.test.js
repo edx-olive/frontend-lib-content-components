@@ -4,7 +4,7 @@ var _OLXParser = require("./OLXParser");
 var _olxTestData = require("./mockData/olxTestData");
 var _editorTestData = require("./mockData/editorTestData");
 var _ReactStateOLXParser = _interopRequireDefault(require("./ReactStateOLXParser"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 describe('Check React State OLXParser problem', () => {
   test('for checkbox with feedback and hints problem type', () => {
     const olxparser = new _OLXParser.OLXParser(_olxTestData.checkboxesOLXWithFeedbackAndHintsOLX.rawOLX);

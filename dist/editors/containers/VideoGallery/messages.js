@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.messages = exports.default = void 0;
-const messages = {
+const messages = exports.messages = {
   // Gallery
   emptyGalleryLabel: {
     id: 'authoring.selectvideomodal.emptyGalleryLabel',
@@ -111,7 +111,5 @@ const messages = {
     description: 'Message presented to user when videos are not found'
   }
 };
-exports.messages = messages;
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

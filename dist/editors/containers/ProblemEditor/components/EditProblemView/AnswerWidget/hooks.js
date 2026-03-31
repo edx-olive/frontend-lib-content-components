@@ -10,96 +10,79 @@ var _module = _interopRequireWildcard(require("./hooks"));
 var _redux = require("../../../../../data/redux");
 var _problem = require("../../../../../data/constants/problem");
 var _hooks2 = require("../hooks");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-const state = (0, _utils.StrictDict)({
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+const state = exports.state = (0, _utils.StrictDict)({
   // eslint-disable-next-line react-hooks/rules-of-hooks
   isFeedbackVisible: val => (0, _react.useState)(val)
 });
-exports.state = state;
-const removeAnswer = _ref => {
-  let {
-    answer,
-    dispatch
-  } = _ref;
-  return () => {
-    dispatch(_redux.actions.problem.deleteAnswer({
-      id: answer.id,
-      correct: answer.correct,
-      editorState: (0, _hooks2.fetchEditorContent)({
-        format: ''
-      })
-    }));
-  };
+const removeAnswer = ({
+  answer,
+  dispatch
+}) => () => {
+  dispatch(_redux.actions.problem.deleteAnswer({
+    id: answer.id,
+    correct: answer.correct,
+    editorState: (0, _hooks2.fetchEditorContent)({
+      format: ''
+    })
+  }));
 };
 exports.removeAnswer = removeAnswer;
-const setAnswer = _ref2 => {
-  let {
-    answer,
-    hasSingleAnswer,
-    dispatch
-  } = _ref2;
-  return payload => {
-    dispatch(_redux.actions.problem.updateAnswer(_objectSpread({
-      id: answer.id,
-      hasSingleAnswer
-    }, payload)));
-  };
+const setAnswer = ({
+  answer,
+  hasSingleAnswer,
+  dispatch
+}) => payload => {
+  dispatch(_redux.actions.problem.updateAnswer(_objectSpread({
+    id: answer.id,
+    hasSingleAnswer
+  }, payload)));
 };
 exports.setAnswer = setAnswer;
-const setAnswerTitle = _ref3 => {
-  let {
-    answer,
+const setAnswerTitle = ({
+  answer,
+  hasSingleAnswer,
+  dispatch,
+  problemType
+}) => updatedTitle => {
+  let title = updatedTitle;
+  if ([_problem.ProblemTypeKeys.TEXTINPUT, _problem.ProblemTypeKeys.NUMERIC, _problem.ProblemTypeKeys.DROPDOWN].includes(problemType)) {
+    title = updatedTitle.target.value;
+  }
+  dispatch(_redux.actions.problem.updateAnswer({
+    id: answer.id,
     hasSingleAnswer,
-    dispatch,
-    problemType
-  } = _ref3;
-  return updatedTitle => {
-    let title = updatedTitle;
-    if ([_problem.ProblemTypeKeys.TEXTINPUT, _problem.ProblemTypeKeys.NUMERIC, _problem.ProblemTypeKeys.DROPDOWN].includes(problemType)) {
-      title = updatedTitle.target.value;
-    }
-    dispatch(_redux.actions.problem.updateAnswer({
-      id: answer.id,
-      hasSingleAnswer,
-      title
-    }));
-  };
+    title
+  }));
 };
 exports.setAnswerTitle = setAnswerTitle;
-const setSelectedFeedback = _ref4 => {
-  let {
-    answer,
+const setSelectedFeedback = ({
+  answer,
+  hasSingleAnswer,
+  dispatch
+}) => e => {
+  dispatch(_redux.actions.problem.updateAnswer({
+    id: answer.id,
     hasSingleAnswer,
-    dispatch
-  } = _ref4;
-  return e => {
-    dispatch(_redux.actions.problem.updateAnswer({
-      id: answer.id,
-      hasSingleAnswer,
-      selectedFeedback: e.target.value
-    }));
-  };
+    selectedFeedback: e.target.value
+  }));
 };
 exports.setSelectedFeedback = setSelectedFeedback;
-const setUnselectedFeedback = _ref5 => {
-  let {
-    answer,
+const setUnselectedFeedback = ({
+  answer,
+  hasSingleAnswer,
+  dispatch
+}) => e => {
+  dispatch(_redux.actions.problem.updateAnswer({
+    id: answer.id,
     hasSingleAnswer,
-    dispatch
-  } = _ref5;
-  return e => {
-    dispatch(_redux.actions.problem.updateAnswer({
-      id: answer.id,
-      hasSingleAnswer,
-      unselectedFeedback: e.target.value
-    }));
-  };
+    unselectedFeedback: e.target.value
+  }));
 };
 exports.setUnselectedFeedback = setUnselectedFeedback;
 const useFeedback = answer => {
@@ -131,11 +114,10 @@ const useFeedback = answer => {
 exports.useFeedback = useFeedback;
 const isSingleAnswerProblem = problemType => problemType === _problem.ProblemTypeKeys.DROPDOWN;
 exports.isSingleAnswerProblem = isSingleAnswerProblem;
-const useAnswerContainer = _ref6 => {
-  let {
-    answers,
-    updateField
-  } = _ref6;
+const useAnswerContainer = ({
+  answers,
+  updateField
+}) => {
   (0, _react.useEffect)(() => {
     let answerCount = 0;
     answers.forEach(answer => {
@@ -149,7 +131,7 @@ const useAnswerContainer = _ref6 => {
   }, []);
 };
 exports.useAnswerContainer = useAnswerContainer;
-var _default = {
+var _default = exports.default = {
   state,
   removeAnswer,
   setAnswer,
@@ -158,5 +140,4 @@ var _default = {
   isSingleAnswerProblem,
   useAnswerContainer
 };
-exports.default = _default;
 //# sourceMappingURL=hooks.js.map

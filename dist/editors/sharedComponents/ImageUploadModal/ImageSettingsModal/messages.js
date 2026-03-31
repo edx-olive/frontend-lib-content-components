@@ -91,6 +91,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Message feedback for user below the dimension fields.'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

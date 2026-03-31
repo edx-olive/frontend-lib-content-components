@@ -10,16 +10,14 @@ var _utils = require("../../../../../utils");
 var _redux = require("../../../../../data/redux");
 var _handlers = require("./handlers");
 var _module = _interopRequireWildcard(require("./hooks"));
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-const selectorKeys = (0, _utils.keyStore)(_redux.selectors.video);
-exports.selectorKeys = selectorKeys;
-const state = (0, _utils.StrictDict)([selectorKeys.videoSource, selectorKeys.videoId, selectorKeys.fallbackVideos, selectorKeys.allowVideoDownloads, selectorKeys.allowVideoSharing, selectorKeys.thumbnail, selectorKeys.transcripts, selectorKeys.allowTranscriptDownloads, selectorKeys.showTranscriptByDefault, selectorKeys.duration, selectorKeys.handout, selectorKeys.licenseType, selectorKeys.licenseDetails].reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+const selectorKeys = exports.selectorKeys = (0, _utils.keyStore)(_redux.selectors.video);
+const state = exports.state = (0, _utils.StrictDict)([selectorKeys.videoSource, selectorKeys.videoId, selectorKeys.fallbackVideos, selectorKeys.allowVideoDownloads, selectorKeys.allowVideoSharing, selectorKeys.thumbnail, selectorKeys.transcripts, selectorKeys.allowTranscriptDownloads, selectorKeys.showTranscriptByDefault, selectorKeys.duration, selectorKeys.handout, selectorKeys.licenseType, selectorKeys.licenseDetails].reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
   [key]: val => (0, _react.useState)(val)
 }), {}));
 
@@ -31,7 +29,6 @@ const state = (0, _utils.StrictDict)([selectorKeys.videoSource, selectorKeys.vid
  * @param {any} val - new value
  * @return {any[]} - new array with element at index replaced with val
  */
-exports.state = state;
 const updatedArray = (array, index, val) => {
   const newArray = [...array];
   newArray.splice(index, 1, val);
@@ -60,15 +57,12 @@ const updatedObject = (obj, index, val) => _objectSpread(_objectSpread({}, obj),
  */
 // eslint-disable-next-line react-hooks/rules-of-hooks
 exports.updatedObject = updatedObject;
-const updateFormField = _ref => {
-  let {
-    dispatch,
-    key
-  } = _ref;
-  return (0, _react.useCallback)(val => dispatch(_redux.actions.video.updateField({
-    [key]: val
-  })), []);
-};
+const updateFormField = ({
+  dispatch,
+  key
+}) => (0, _react.useCallback)(val => dispatch(_redux.actions.video.updateField({
+  [key]: val
+})), []);
 
 /**
  * valueHooks({ dispatch, key })
@@ -84,11 +78,10 @@ const updateFormField = _ref => {
  *   setAll - sets form field in hook AND redux
  */
 exports.updateFormField = updateFormField;
-const valueHooks = _ref2 => {
-  let {
-    dispatch,
-    key
-  } = _ref2;
+const valueHooks = ({
+  dispatch,
+  key
+}) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formValue = (0, _reactRedux.useSelector)(_redux.selectors.video[key]);
   const [local, setLocal] = _module.state[key](formValue);
@@ -136,11 +129,10 @@ const valueHooks = _ref2 => {
  *   onBlur - handle input blur by updating local and redux states
  */
 exports.valueHooks = valueHooks;
-const genericWidget = _ref3 => {
-  let {
-    dispatch,
-    key
-  } = _ref3;
+const genericWidget = ({
+  dispatch,
+  key
+}) => {
   const {
     formValue,
     local,
@@ -184,11 +176,10 @@ const genericWidget = _ref3 => {
  *   onClear(index) - handle clear event by setting value to empty string
  */
 exports.genericWidget = genericWidget;
-const arrayWidget = _ref4 => {
-  let {
-    dispatch,
-    key
-  } = _ref4;
+const arrayWidget = ({
+  dispatch,
+  key
+}) => {
   const widget = _module.valueHooks({
     dispatch,
     key
@@ -231,11 +222,10 @@ const arrayWidget = _ref4 => {
  *   onClear(index) - handle clear event by setting value to empty string
  */
 exports.arrayWidget = arrayWidget;
-const objectWidget = _ref5 => {
-  let {
-    dispatch,
-    key
-  } = _ref5;
+const objectWidget = ({
+  dispatch,
+  key
+}) => {
   const widget = _module.valueHooks({
     dispatch,
     key
@@ -265,25 +255,21 @@ const objectWidget = _ref5 => {
  * @return {object} - { <key>: <widgetFn({ key, dispatch })> }
  */
 exports.objectWidget = objectWidget;
-const widgetValues = _ref6 => {
-  let {
-    fields,
+const widgetValues = ({
+  fields,
+  dispatch
+}) => Object.keys(fields).reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
+  [key]: fields[key]({
+    key,
     dispatch
-  } = _ref6;
-  return Object.keys(fields).reduce((obj, key) => _objectSpread(_objectSpread({}, obj), {}, {
-    [key]: fields[key]({
-      key,
-      dispatch
-    })
-  }), {});
-};
+  })
+}), {});
 exports.widgetValues = widgetValues;
-var _default = {
+var _default = exports.default = {
   arrayWidget,
   genericWidget,
   objectWidget,
   selectorKeys,
   widgetValues
 };
-exports.default = _default;
 //# sourceMappingURL=hooks.js.map

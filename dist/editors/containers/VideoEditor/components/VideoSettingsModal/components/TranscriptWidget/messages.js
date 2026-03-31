@@ -142,6 +142,5 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Message for import transcript card asking user if they want to import transcript'
   }
 });
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map

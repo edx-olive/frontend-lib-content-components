@@ -10,7 +10,7 @@ exports.imageResponse = exports.default = void 0;
 //     display_name: Image Mapped Input
 //     markdown: !!null
 // data:   |
-const imageResponse = `<problem>
+const imageResponse = exports.imageResponse = `<problem>
         <p>
             In an image mapped input problem, also known as a "pointing on a picture" problem, students click inside a defined region in an image. You define this region by including coordinates in the body of the problem. You can define one rectangular region,
             multiple rectangular regions, or one non-rectangular region. For more information, see
@@ -35,7 +35,5 @@ const imageResponse = `<problem>
             </solution>
         </imageresponse>
     </problem>`;
-exports.imageResponse = imageResponse;
-var _default = imageResponse;
-exports.default = _default;
+var _default = exports.default = imageResponse;
 //# sourceMappingURL=imageresponse.js.map

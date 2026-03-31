@@ -11,6 +11,5 @@ const textInput = `<problem>
     <textline size="20"/>
   </stringresponse>
 </problem>`;
-var _default = textInput;
-exports.default = _default;
+var _default = exports.default = textInput;
 //# sourceMappingURL=textInput.js.map

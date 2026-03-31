@@ -12,11 +12,10 @@ require("./index.scss");
 var _messages = _interopRequireDefault(require("./messages"));
 var _VideoUploader = require("./VideoUploader");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const VideoUploadEditor = _ref => {
-  let {
-    onClose
-  } = _ref;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const VideoUploadEditor = ({
+  onClose
+}) => {
   const [loading, setLoading] = _react.default.useState(false);
   const intl = (0, _i18n.useIntl)();
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -40,6 +39,5 @@ exports.VideoUploadEditor = VideoUploadEditor;
 VideoUploadEditor.propTypes = {
   onClose: _propTypes.default.func.isRequired
 };
-var _default = VideoUploadEditor;
-exports.default = _default;
+var _default = exports.default = VideoUploadEditor;
 //# sourceMappingURL=index.js.map

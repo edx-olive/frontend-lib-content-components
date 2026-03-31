@@ -5,10 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ToleranceTypes = void 0;
 var _messages = _interopRequireDefault(require("./messages"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /* eslint-disable import/prefer-default-export */
 
-const ToleranceTypes = {
+const ToleranceTypes = exports.ToleranceTypes = {
   percent: {
     type: 'Percent',
     message: _messages.default.typesPercentage
@@ -22,5 +22,4 @@ const ToleranceTypes = {
     message: _messages.default.typesNone
   }
 };
-exports.ToleranceTypes = ToleranceTypes;
 //# sourceMappingURL=constants.js.map

@@ -39,6 +39,5 @@ const alphanumericMap = {
   ge: '≥',
   quot: '"'
 };
-var _default = alphanumericMap;
-exports.default = _default;
+var _default = exports.default = alphanumericMap;
 //# sourceMappingURL=constants.js.map

@@ -5,14 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RequestStates = exports.RequestKeys = void 0;
 var _utils = require("../../utils");
-const RequestStates = (0, _utils.StrictDict)({
+const RequestStates = exports.RequestStates = (0, _utils.StrictDict)({
   inactive: 'inactive',
   pending: 'pending',
   completed: 'completed',
   failed: 'failed'
 });
-exports.RequestStates = RequestStates;
-const RequestKeys = (0, _utils.StrictDict)({
+const RequestKeys = exports.RequestKeys = (0, _utils.StrictDict)({
   fetchAssets: 'fetchAssets',
   fetchVideos: 'fetchVideos',
   fetchBlock: 'fetchBlock',
@@ -35,5 +34,4 @@ const RequestKeys = (0, _utils.StrictDict)({
   fetchAdvancedSettings: 'fetchAdvancedSettings',
   fetchVideoFeatures: 'fetchVideoFeatures'
 });
-exports.RequestKeys = RequestKeys;
 //# sourceMappingURL=requests.js.map

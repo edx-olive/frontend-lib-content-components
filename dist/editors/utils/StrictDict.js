@@ -27,6 +27,5 @@ const strictGet = (target, name) => {
 const StrictDict = dict => new Proxy(dict, {
   get: strictGet
 });
-var _default = StrictDict;
-exports.default = _default;
+var _default = exports.default = StrictDict;
 //# sourceMappingURL=StrictDict.js.map

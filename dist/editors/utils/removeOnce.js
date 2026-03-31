@@ -15,6 +15,5 @@ const removeItemOnce = (arr, value) => {
   }
   return deepCopy;
 };
-var _default = removeItemOnce;
-exports.default = _default;
+var _default = exports.default = removeItemOnce;
 //# sourceMappingURL=removeOnce.js.map

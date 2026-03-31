@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.messages = exports.default = void 0;
-const messages = {
+const messages = exports.messages = {
   searchPlaceholder: {
     id: 'authoring.selectionmodal.search.placeholder',
     defaultMessage: 'Search',
@@ -31,7 +31,5 @@ const messages = {
     description: 'File date-added string'
   }
 };
-exports.messages = messages;
-var _default = messages;
-exports.default = _default;
+var _default = exports.default = messages;
 //# sourceMappingURL=messages.js.map
