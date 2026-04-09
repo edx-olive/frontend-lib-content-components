@@ -51,7 +51,8 @@ const Transcript = ({
     launchDeleteConfirmation,
     cancelDelete
   } = _module.hooks.setUpDeleteConfirmation();
-  const isSharedWarning = sharedVideoWarning && sharedVideoWarning.language === language;
+  const isSharedWarning = true; // sharedVideoWarning && sharedVideoWarning.language === language;
+
   if (isSharedWarning) {
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Card, {
       className: "mb-2",

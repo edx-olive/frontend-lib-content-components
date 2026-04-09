@@ -48,7 +48,7 @@ export const Transcript = ({
   clearSharedVideoWarning,
 }) => {
   const { inDeleteConfirmation, launchDeleteConfirmation, cancelDelete } = module.hooks.setUpDeleteConfirmation();
-  const isSharedWarning = sharedVideoWarning && sharedVideoWarning.language === language;
+  const isSharedWarning = true // sharedVideoWarning && sharedVideoWarning.language === language;
 
   if (isSharedWarning) {
     return (
