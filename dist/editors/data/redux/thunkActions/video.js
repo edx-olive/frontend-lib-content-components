@@ -403,10 +403,14 @@ const deleteTranscript = ({
     action,
     onSuccess: () => {
       const updatedTranscripts = transcripts.filter(langCode => langCode !== language);
-      dispatch(_2.actions.video.updateField({
+      const updates = {
         transcripts: updatedTranscripts,
         sharedVideoWarning: null
-      }));
+      };
+      if (action === 'disconnect') {
+        updates.videoId = '';
+      }
+      dispatch(_2.actions.video.updateField(updates));
     }
   }));
 };

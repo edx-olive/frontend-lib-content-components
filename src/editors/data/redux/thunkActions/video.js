@@ -349,7 +349,11 @@ export const deleteTranscript = ({ language, action }) => (dispatch, getState) =
     action,
     onSuccess: () => {
       const updatedTranscripts = transcripts.filter((langCode) => langCode !== language);
-      dispatch(actions.video.updateField({ transcripts: updatedTranscripts, sharedVideoWarning: null }));
+      const updates = { transcripts: updatedTranscripts, sharedVideoWarning: null };
+      if (action === 'disconnect') {
+        updates.videoId = '';
+      }
+      dispatch(actions.video.updateField(updates));
     },
   }));
 };
