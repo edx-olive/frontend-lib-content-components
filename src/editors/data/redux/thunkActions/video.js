@@ -391,12 +391,19 @@ export const updateTranscriptLanguage = ({ newLanguageCode, languageBeforeChange
   }));
 };
 
-export const replaceTranscript = ({ newFile, newFilename, language }) => (dispatch, getState) => {
+export const replaceTranscript = ({ newFile, newFilename, language, action }) => (dispatch, getState) => {
   const state = getState();
   const { videoId } = state.video;
+  if (videoId && !action) {
+    dispatch(actions.video.updateField({
+      sharedVideoWarning: { language, replaceData: { newFile, newFilename } },
+    }));
+    return;
+  }
   dispatch(requests.deleteTranscript({
     language,
     videoId,
+    action,
     onSuccess: () => {
       dispatch(uploadTranscript({ language, file: newFile, filename: newFilename }));
     },

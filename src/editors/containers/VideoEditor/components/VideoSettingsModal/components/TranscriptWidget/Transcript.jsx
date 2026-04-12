@@ -44,6 +44,7 @@ export const Transcript = ({
   transcriptUrl,
   // redux
   deleteTranscript,
+  replaceTranscript,
   sharedVideoWarning,
   clearSharedVideoWarning,
 }) => {
@@ -51,6 +52,15 @@ export const Transcript = ({
   const isSharedWarning = sharedVideoWarning && sharedVideoWarning.language === language;
 
   if (isSharedWarning) {
+    const { replaceData } = sharedVideoWarning;
+    const handleAction = (action) => {
+      clearSharedVideoWarning();
+      if (replaceData) {
+        replaceTranscript({ language, action, ...replaceData });
+      } else {
+        deleteTranscript({ language, action });
+      }
+    };
     return (
       <Card className="mb-2">
         <Card.Header title={(<FormattedMessage {...messages.sharedVideoTitle} />)} />
@@ -69,20 +79,14 @@ export const Transcript = ({
             <Button
               variant="outline-primary"
               className="mb-2 mb-sm-0"
-              onClick={() => {
-                clearSharedVideoWarning();
-                deleteTranscript({ language, action: 'disconnect' });
-              }}
+              onClick={() => handleAction('disconnect')}
             >
               <FormattedMessage {...messages.disconnectAndRemoveLabel} />
             </Button>
             <Button
               variant="danger"
               className="mb-2 mb-sm-0"
-              onClick={() => {
-                clearSharedVideoWarning();
-                deleteTranscript({ language, action: 'delete_all' });
-              }}
+              onClick={() => handleAction('delete_all')}
             >
               <FormattedMessage {...messages.removeForAllCopiesLabel} />
             </Button>
@@ -158,8 +162,13 @@ Transcript.propTypes = {
   language: PropTypes.string.isRequired,
   transcriptUrl: PropTypes.string,
   deleteTranscript: PropTypes.func.isRequired,
+  replaceTranscript: PropTypes.func.isRequired,
   sharedVideoWarning: PropTypes.shape({
     language: PropTypes.string,
+    replaceData: PropTypes.shape({
+      newFile: PropTypes.object,
+      newFilename: PropTypes.string,
+    }),
   }),
   clearSharedVideoWarning: PropTypes.func.isRequired,
 };
@@ -169,6 +178,7 @@ export const mapStateToProps = (state) => ({
 });
 export const mapDispatchToProps = (dispatch) => ({
   deleteTranscript: ({ language, action }) => dispatch(thunkActions.video.deleteTranscript({ language, action })),
+  replaceTranscript: ({ language, action, newFile, newFilename }) => dispatch(thunkActions.video.replaceTranscript({ language, action, newFile, newFilename })),
   clearSharedVideoWarning: () => dispatch(actions.video.updateField({ sharedVideoWarning: null })),
 });
 

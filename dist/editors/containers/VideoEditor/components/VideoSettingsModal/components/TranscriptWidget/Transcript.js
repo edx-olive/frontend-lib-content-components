@@ -43,6 +43,7 @@ const Transcript = ({
   transcriptUrl,
   // redux
   deleteTranscript,
+  replaceTranscript,
   sharedVideoWarning,
   clearSharedVideoWarning
 }) => {
@@ -53,6 +54,23 @@ const Transcript = ({
   } = _module.hooks.setUpDeleteConfirmation();
   const isSharedWarning = sharedVideoWarning && sharedVideoWarning.language === language;
   if (isSharedWarning) {
+    const {
+      replaceData
+    } = sharedVideoWarning;
+    const handleAction = action => {
+      clearSharedVideoWarning();
+      if (replaceData) {
+        replaceTranscript(_objectSpread({
+          language,
+          action
+        }, replaceData));
+      } else {
+        deleteTranscript({
+          language,
+          action
+        });
+      }
+    };
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_paragon.Card, {
       className: "mb-2",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Card.Header, {
@@ -69,24 +87,12 @@ const Transcript = ({
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Button, {
             variant: "outline-primary",
             className: "mb-2 mb-sm-0",
-            onClick: () => {
-              clearSharedVideoWarning();
-              deleteTranscript({
-                language,
-                action: 'disconnect'
-              });
-            },
+            onClick: () => handleAction('disconnect'),
             children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_i18n.FormattedMessage, _objectSpread({}, _messages.default.disconnectAndRemoveLabel))
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_paragon.Button, {
             variant: "danger",
             className: "mb-2 mb-sm-0",
-            onClick: () => {
-              clearSharedVideoWarning();
-              deleteTranscript({
-                language,
-                action: 'delete_all'
-              });
-            },
+            onClick: () => handleAction('delete_all'),
             children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_i18n.FormattedMessage, _objectSpread({}, _messages.default.removeForAllCopiesLabel))
           })]
         })]
@@ -151,8 +157,13 @@ Transcript.propTypes = {
   language: _propTypes.default.string.isRequired,
   transcriptUrl: _propTypes.default.string,
   deleteTranscript: _propTypes.default.func.isRequired,
+  replaceTranscript: _propTypes.default.func.isRequired,
   sharedVideoWarning: _propTypes.default.shape({
-    language: _propTypes.default.string
+    language: _propTypes.default.string,
+    replaceData: _propTypes.default.shape({
+      newFile: _propTypes.default.object,
+      newFilename: _propTypes.default.string
+    })
   }),
   clearSharedVideoWarning: _propTypes.default.func.isRequired
 };
@@ -167,6 +178,17 @@ const mapDispatchToProps = dispatch => ({
   }) => dispatch(_redux.thunkActions.video.deleteTranscript({
     language,
     action
+  })),
+  replaceTranscript: ({
+    language,
+    action,
+    newFile,
+    newFilename
+  }) => dispatch(_redux.thunkActions.video.replaceTranscript({
+    language,
+    action,
+    newFile,
+    newFilename
   })),
   clearSharedVideoWarning: () => dispatch(_redux.actions.video.updateField({
     sharedVideoWarning: null
