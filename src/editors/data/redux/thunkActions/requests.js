@@ -197,13 +197,14 @@ export const importTranscript = ({ youTubeId, ...rest }) => (dispatch, getState)
   }));
 };
 
-export const deleteTranscript = ({ language, videoId, ...rest }) => (dispatch, getState) => {
+export const deleteTranscript = ({ language, videoId, action, ...rest }) => (dispatch, getState) => {
   dispatch(module.networkRequest({
     requestKey: RequestKeys.deleteTranscript,
     promise: api.deleteTranscript({
       blockId: selectors.app.blockId(getState()),
       language,
       videoId,
+      action,
       studioEndpointUrl: selectors.app.studioEndpointUrl(getState()),
     }),
     ...rest,
