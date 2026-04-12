@@ -51,8 +51,17 @@ export const loadVideoData = (selectedVideoId, selectedVideoUrl) => (dispatch, g
   const videoSourceUrl = selectedVideoUrl != null ? selectedVideoUrl : videoUrl;
   const [licenseType, licenseOptions] = module.parseLicense({ licenseData: studioView, level: 'block' });
   console.log(licenseType);
-  const transcripts = rawVideoData.transcriptsFromSelected ? rawVideoData.transcriptsFromSelected
+  let transcripts = rawVideoData.transcriptsFromSelected ? rawVideoData.transcriptsFromSelected
     : module.parseTranscripts({ transcriptsData: studioView });
+
+  // Filter out stale transcripts that no longer exist in VAL
+  if (videoId && !rawVideoData.transcriptsFromSelected) {
+    const valVideo = _.find(rawVideos, v => _.get(v, 'edx_video_id') === videoId);
+    if (valVideo && valVideo.transcripts) {
+      const valLanguages = valVideo.transcripts;
+      transcripts = transcripts.filter(lang => valLanguages.includes(lang));
+    }
+  }
 
   const [courseLicenseType, courseLicenseDetails] = module.parseLicense({
     licenseData: courseData.license,
