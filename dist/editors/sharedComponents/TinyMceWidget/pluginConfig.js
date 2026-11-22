@@ -7,11 +7,12 @@ exports.default = void 0;
 var _utils = require("../../utils");
 var _tinyMCE = require("../../data/constants/tinyMCE");
 const mapToolbars = toolbars => toolbars.map(toolbar => toolbar.join(' ')).join(' | ');
-const pluginConfig = ({
-  isLibrary,
-  placeholder,
-  editorType
-}) => {
+const pluginConfig = _ref => {
+  let {
+    isLibrary,
+    placeholder,
+    editorType
+  } = _ref;
   const image = isLibrary ? '' : _tinyMCE.plugins.image;
   const imageTools = isLibrary ? '' : _tinyMCE.plugins.imagetools;
   const imageUploadButton = isLibrary ? '' : _tinyMCE.buttons.imageUploadButton;
@@ -49,5 +50,6 @@ const pluginConfig = ({
     }
   });
 };
-var _default = exports.default = pluginConfig;
+var _default = pluginConfig;
+exports.default = _default;
 //# sourceMappingURL=pluginConfig.js.map

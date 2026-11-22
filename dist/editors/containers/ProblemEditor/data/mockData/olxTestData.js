@@ -7,7 +7,7 @@ exports.textInputWithFeedbackAndHintsOLXWithMultipleAnswers = exports.textInputW
 /* eslint-disable */
 // lint is disabled for this file due to strict spacing
 
-const checkboxesOLXWithFeedbackAndHintsOLX = exports.checkboxesOLXWithFeedbackAndHintsOLX = {
+const checkboxesOLXWithFeedbackAndHintsOLX = {
   rawOLX: `<problem>
   <choiceresponse>
     <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for checkboxes with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -129,7 +129,8 @@ const checkboxesOLXWithFeedbackAndHintsOLX = exports.checkboxesOLXWithFeedbackAn
   </problem>
   `
 };
-const multipleChoiceWithoutAnswers = exports.multipleChoiceWithoutAnswers = {
+exports.checkboxesOLXWithFeedbackAndHintsOLX = checkboxesOLXWithFeedbackAndHintsOLX;
+const multipleChoiceWithoutAnswers = {
   rawOLX: `<problem>
   <multiplechoiceresponse>
     <choicegroup>
@@ -146,7 +147,8 @@ const multipleChoiceWithoutAnswers = exports.multipleChoiceWithoutAnswers = {
     }]
   }
 };
-const multipleChoiceSingleAnswer = exports.multipleChoiceSingleAnswer = {
+exports.multipleChoiceWithoutAnswers = multipleChoiceWithoutAnswers;
+const multipleChoiceSingleAnswer = {
   rawOLX: `<problem>
   <multiplechoiceresponse>
     <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for checkboxes with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -214,7 +216,8 @@ const multipleChoiceSingleAnswer = exports.multipleChoiceSingleAnswer = {
 </problem>
 `
 };
-const dropdownOLXWithFeedbackAndHintsOLX = exports.dropdownOLXWithFeedbackAndHintsOLX = {
+exports.multipleChoiceSingleAnswer = multipleChoiceSingleAnswer;
+const dropdownOLXWithFeedbackAndHintsOLX = {
   rawOLX: `<problem>
 <optionresponse>
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for dropdown with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -280,7 +283,8 @@ an incorrect answer        <optionhint><p>You can specify optional feedback for 
 </problem>
 `
 };
-const multipleChoiceWithFeedbackAndHintsOLX = exports.multipleChoiceWithFeedbackAndHintsOLX = {
+exports.dropdownOLXWithFeedbackAndHintsOLX = dropdownOLXWithFeedbackAndHintsOLX;
+const multipleChoiceWithFeedbackAndHintsOLX = {
   rawOLX: `<problem>
 <multiplechoiceresponse>
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for multiple choice with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -354,7 +358,8 @@ const multipleChoiceWithFeedbackAndHintsOLX = exports.multipleChoiceWithFeedback
 </problem>
 `
 };
-const numericInputWithFeedbackAndHintsOLX = exports.numericInputWithFeedbackAndHintsOLX = {
+exports.multipleChoiceWithFeedbackAndHintsOLX = multipleChoiceWithFeedbackAndHintsOLX;
+const numericInputWithFeedbackAndHintsOLX = {
   rawOLX: `<problem>
 <numericalresponse answer="100">
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for numerical input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -413,7 +418,8 @@ const numericInputWithFeedbackAndHintsOLX = exports.numericInputWithFeedbackAndH
 </problem>
 `
 };
-const numericInputWithAnswerRangeOLX = exports.numericInputWithAnswerRangeOLX = {
+exports.numericInputWithFeedbackAndHintsOLX = numericInputWithFeedbackAndHintsOLX;
+const numericInputWithAnswerRangeOLX = {
   rawOLX: `<problem>
 <numericalresponse answer="[3/2,-1.3)">
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for numerical input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -442,7 +448,8 @@ const numericInputWithAnswerRangeOLX = exports.numericInputWithAnswerRangeOLX = 
 </problem>
 `
 };
-const textInputWithFeedbackAndHintsOLX = exports.textInputWithFeedbackAndHintsOLX = {
+exports.numericInputWithAnswerRangeOLX = numericInputWithAnswerRangeOLX;
+const textInputWithFeedbackAndHintsOLX = {
   rawOLX: `<problem>
 <stringresponse answer="the correct answer" type="ci">
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for text input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -509,7 +516,8 @@ const textInputWithFeedbackAndHintsOLX = exports.textInputWithFeedbackAndHintsOL
 </problem>
 `
 };
-const textInputWithFeedbackAndHintsOLXWithMultipleAnswers = exports.textInputWithFeedbackAndHintsOLXWithMultipleAnswers = {
+exports.textInputWithFeedbackAndHintsOLX = textInputWithFeedbackAndHintsOLX;
+const textInputWithFeedbackAndHintsOLXWithMultipleAnswers = {
   rawOLX: `<problem>
 <stringresponse answer="the correct answer" type="ci">
   <p>You can use this template as a guide to the simple editor markdown and OLX markup to use for text input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
@@ -585,7 +593,8 @@ const textInputWithFeedbackAndHintsOLXWithMultipleAnswers = exports.textInputWit
 </problem>
 `
 };
-const advancedProblemOlX = exports.advancedProblemOlX = {
+exports.textInputWithFeedbackAndHintsOLXWithMultipleAnswers = textInputWithFeedbackAndHintsOLXWithMultipleAnswers;
+const advancedProblemOlX = {
   rawOLX: `<problem>
   <formularesponse type="ci" samples="R_1,R_2,R_3@1,2,3:3,4,5#10" answer="R_1*R_2/R_3">
       <p>You can use this template as a guide to the OLX markup to use for math expression problems. Edit this component to replace the example with your own assessment.</p>
@@ -596,7 +605,8 @@ const advancedProblemOlX = exports.advancedProblemOlX = {
   </formularesponse>
 </problem>`
 };
-const scriptProblemOlX = exports.scriptProblemOlX = {
+exports.advancedProblemOlX = advancedProblemOlX;
+const scriptProblemOlX = {
   rawOLX: `<problem>
     <script>
       some code
@@ -612,7 +622,8 @@ const scriptProblemOlX = exports.scriptProblemOlX = {
 </numericalresponse>
 </problem>`
 };
-const multipleTextInputProblemOlX = exports.multipleTextInputProblemOlX = {
+exports.scriptProblemOlX = scriptProblemOlX;
+const multipleTextInputProblemOlX = {
   rawOLX: `<problem>
   <stringresponse answer="correct answer">
     <textline size="20"/>
@@ -622,7 +633,8 @@ const multipleTextInputProblemOlX = exports.multipleTextInputProblemOlX = {
   </stringresponse>
 </problem>`
 };
-const multipleNumericProblemOlX = exports.multipleNumericProblemOlX = {
+exports.multipleTextInputProblemOlX = multipleTextInputProblemOlX;
+const multipleNumericProblemOlX = {
   rawOLX: `<problem>
   <numericalresponse answer="100">
     <formulaequationinput></formulaequationinput>
@@ -632,7 +644,8 @@ const multipleNumericProblemOlX = exports.multipleNumericProblemOlX = {
   </numericalresponse>
 </problem>`
 };
-const NumericAndTextInputProblemOlX = exports.NumericAndTextInputProblemOlX = {
+exports.multipleNumericProblemOlX = multipleNumericProblemOlX;
+const NumericAndTextInputProblemOlX = {
   rawOLX: `<problem>
   <stringresponse answer="correct answer">
     <textline size="20"/>
@@ -642,10 +655,12 @@ const NumericAndTextInputProblemOlX = exports.NumericAndTextInputProblemOlX = {
   </numericalresponse>
 </problem>`
 };
-const blankProblemOLX = exports.blankProblemOLX = {
+exports.NumericAndTextInputProblemOlX = NumericAndTextInputProblemOlX;
+const blankProblemOLX = {
   rawOLX: '<problem></problem>'
 };
-const blankQuestionOLX = exports.blankQuestionOLX = {
+exports.blankProblemOLX = blankProblemOLX;
+const blankQuestionOLX = {
   rawOLX: `<problem>
   <stringresponse type="ci">
     <additional_answer />
@@ -654,7 +669,8 @@ const blankQuestionOLX = exports.blankQuestionOLX = {
 </problem>`,
   question: ''
 };
-const styledQuestionOLX = exports.styledQuestionOLX = {
+exports.blankQuestionOLX = blankQuestionOLX;
+const styledQuestionOLX = {
   rawOLX: `<problem>
   <p>
     <strong>
@@ -676,7 +692,8 @@ const styledQuestionOLX = exports.styledQuestionOLX = {
     </strong>
   </p>`
 };
-const shuffleProblemOLX = exports.shuffleProblemOLX = {
+exports.styledQuestionOLX = styledQuestionOLX;
+const shuffleProblemOLX = {
   rawOLX: `<problem>
   <multiplechoiceresponse>
     <label>What Apple device competed with the portable CD player?</label>
@@ -689,7 +706,8 @@ const shuffleProblemOLX = exports.shuffleProblemOLX = {
   </multiplechoiceresponse>
 </problem>`
 };
-const labelDescriptionQuestionOLX = exports.labelDescriptionQuestionOLX = {
+exports.shuffleProblemOLX = shuffleProblemOLX;
+const labelDescriptionQuestionOLX = {
   rawOLX: `<problem display_name="Eggs b) - Choosing a System" markdown="null" max_attempts="3" weight="0.5">
   <p style="text-align: center;"><img height="274" width="" src="/static/boiling_eggs_water_system.png" alt="boiling eggs: water system"/></p>
   <multiplechoiceresponse>
@@ -712,7 +730,8 @@ const labelDescriptionQuestionOLX = exports.labelDescriptionQuestionOLX = {
   <label>Taking the system as just the <b>water</b>, as indicated by the red dashed line, what would be the correct expression for the first law of thermodynamics applied to this system?</label>
   <em>Watch out, boiling water is hot</em>`
 };
-const htmlEntityTestOLX = exports.htmlEntityTestOLX = {
+exports.labelDescriptionQuestionOLX = labelDescriptionQuestionOLX;
+const htmlEntityTestOLX = {
   rawOLX: `<problem>
   <multiplechoiceresponse>
   <p>What is the content of the register x2 after executing the following three lines of instructions?</p>
@@ -744,7 +763,8 @@ const htmlEntityTestOLX = exports.htmlEntityTestOLX = {
   <p><span style="font-family: 'courier new', courier;"><strong>Address&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;assembly instructions <br></br>0x0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;addi x1, x0, 1<br></br>0x4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;slli x2, x1, 4<br></br>0x8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sub x1, x2, x1</strong></span></p>`,
   solutionExplanation: `<p><span style="font-family: 'courier new', courier;"><strong>Address&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;assembly instructions&#160;&#160;&#160;&#160;comment<br></br>0x0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;addi x1, x0, 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;x1 = 0x1<br></br>0x4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;slli x2, x1, 4&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;x2 = x1 &lt;&lt; 4 = 0x10<br></br>0x8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sub x1, x2, x1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;x1 = x2 - x1 = 0x10 - 0x01 = 0xf</strong></span></p>`
 };
-const numberParseTestOLX = exports.numberParseTestOLX = {
+exports.htmlEntityTestOLX = htmlEntityTestOLX;
+const numberParseTestOLX = {
   rawOLX: `<problem>
   <multiplechoiceresponse>
   <p>What is the content of the register x2 after executing the following three lines of instructions?</p>
@@ -788,7 +808,8 @@ const numberParseTestOLX = exports.numberParseTestOLX = {
   </multiplechoiceresponse>
   </problem>`
 };
-const solutionExplanationTest = exports.solutionExplanationTest = {
+exports.numberParseTestOLX = numberParseTestOLX;
+const solutionExplanationTest = {
   rawOLX: `<problem>
       How <code class="lang-matlab">99</code> long is the array <code class="lang-matlab">q</code> after the following loop runs?
       <pre><code class="lang-matlab">for i = 1:99
@@ -810,7 +831,8 @@ const solutionExplanationTest = exports.solutionExplanationTest = {
   solutionExplanation: `\n            
             This loop will iterate <code class="lang-matlab">99</code> times, but the length of <code class="lang-matlab">q</code> will not be <code class="lang-matlab">99</code> due to indexing with the value <code class="lang-matlab">2*i -1</code>. On the last iteration, <code class="lang-matlab">i = 99</code>, so <code class="lang-matlab">2*i - 1 = 2*78 - 1 = 197</code>. This will be the last position filled in <code class="lang-matlab">q</code>, so the answer is <code class="lang-matlab">197</code>.\n          `
 };
-const solutionExplanationWithoutDivTest = exports.solutionExplanationWithoutDivTest = {
+exports.solutionExplanationTest = solutionExplanationTest;
+const solutionExplanationWithoutDivTest = {
   rawOLX: `<problem display_name="For loop" markdown="null" max_attempts="3" showanswer="answered" weight="0.0">
       <multiplechoiceresponse>
         <p>Considering a list z=[8,12,2,9,7] and the following for loop:</p>
@@ -843,7 +865,8 @@ const solutionExplanationWithoutDivTest = exports.solutionExplanationWithoutDivT
           <p>How would you adjust your code to get the other results? We encourage you to try different for loops and share them in the discussion forum.</p>
         `
 };
-const tablesInRichTextTest = exports.tablesInRichTextTest = {
+exports.solutionExplanationWithoutDivTest = solutionExplanationWithoutDivTest;
+const tablesInRichTextTest = {
   rawOLX: `<problem>
     <choiceresponse>
       <p>
@@ -1013,7 +1036,8 @@ const tablesInRichTextTest = exports.tablesInRichTextTest = {
         In which of the following observations does the C-value paradox apply? Select all that apply.
       </p>`
 };
-const parseOutExplanationTests = exports.parseOutExplanationTests = {
+exports.tablesInRichTextTest = tablesInRichTextTest;
+const parseOutExplanationTests = {
   rawOLX: `<problem>
     <multiplechoiceresponse>
       <choicegroup>
@@ -1034,7 +1058,8 @@ const parseOutExplanationTests = exports.parseOutExplanationTests = {
         <p>solution meat</p>
       `
 };
-const multiSelectPartialCredit = exports.multiSelectPartialCredit = {
+exports.parseOutExplanationTests = parseOutExplanationTests;
+const multiSelectPartialCredit = {
   rawOLX: `<problem>
     <choiceresponse partial_credit="EDC">
       <label>Which of the following is a fruit?</label>
@@ -1048,7 +1073,8 @@ const multiSelectPartialCredit = exports.multiSelectPartialCredit = {
     </choiceresponse>
   </problem>`
 };
-const singleSelectPartialCredit = exports.singleSelectPartialCredit = {
+exports.multiSelectPartialCredit = multiSelectPartialCredit;
+const singleSelectPartialCredit = {
   rawOLX: `<problem>
     <multiplechoiceresponse partial_credit="points">
       <label>What Apple device competed with the portable CD player?</label>
@@ -1061,7 +1087,8 @@ const singleSelectPartialCredit = exports.singleSelectPartialCredit = {
     </multiplechoiceresponse>
   </problem>`
 };
-const numericalProblemPartialCredit = exports.numericalProblemPartialCredit = {
+exports.singleSelectPartialCredit = singleSelectPartialCredit;
+const numericalProblemPartialCredit = {
   rawOLX: `<problem>
     <numericalresponse answer="9.3*10^7" partial_credit="close">
       <label>How many miles away from Earth is the sun?</label>
@@ -1071,4 +1098,5 @@ const numericalProblemPartialCredit = exports.numericalProblemPartialCredit = {
     </numericalresponse>
   </problem>`
 };
+exports.numericalProblemPartialCredit = numericalProblemPartialCredit;
 //# sourceMappingURL=olxTestData.js.map

@@ -8,13 +8,14 @@ var _react = _interopRequireDefault(require("react"));
 var _paragon = require("@edx/paragon");
 var _propTypes = require("prop-types");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const CardSection = ({
-  children,
-  none,
-  isCardCollapsibleOpen,
-  summary
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const CardSection = _ref => {
+  let {
+    children,
+    none,
+    isCardCollapsibleOpen,
+    summary
+  } = _ref;
   const show = isCardCollapsibleOpen || summary;
   if (!show) {
     return null;
@@ -49,5 +50,6 @@ CardSection.defaultProps = {
   none: false,
   summary: null
 };
-var _default = exports.default = CardSection;
+var _default = CardSection;
+exports.default = _default;
 //# sourceMappingURL=CardSection.js.map

@@ -17,5 +17,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Loading message for spinner screenreader text.'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

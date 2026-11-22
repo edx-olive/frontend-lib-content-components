@@ -53,5 +53,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Message Presented To user for action to download handout'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

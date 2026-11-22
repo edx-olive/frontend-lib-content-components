@@ -13,13 +13,14 @@ var _messages = _interopRequireDefault(require("./messages"));
 var _hooks = require("./hooks");
 var _problem = require("../../../../../../../data/constants/problem");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const RandomizationCard = ({
-  randomization,
-  updateSettings,
-  // inject
-  intl
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const RandomizationCard = _ref => {
+  let {
+    randomization,
+    updateSettings,
+    // inject
+    intl
+  } = _ref;
   const {
     summary,
     handleChange
@@ -55,5 +56,6 @@ RandomizationCard.propTypes = {
   updateSettings: _propTypes.default.func.isRequired,
   intl: _i18n.intlShape.isRequired
 };
-var _default = exports.default = (0, _i18n.injectIntl)(RandomizationCard);
+var _default = (0, _i18n.injectIntl)(RandomizationCard);
+exports.default = _default;
 //# sourceMappingURL=index.js.map

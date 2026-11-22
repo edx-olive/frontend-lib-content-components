@@ -32,5 +32,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Screen reader label title for icon button to edit the xblock title'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

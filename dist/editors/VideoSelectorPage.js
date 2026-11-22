@@ -11,25 +11,28 @@ var _ErrorBoundary = _interopRequireDefault(require("./sharedComponents/ErrorBou
 var _VideoSelector = _interopRequireDefault(require("./VideoSelector"));
 var _store = _interopRequireDefault(require("./data/store"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const VideoSelectorPage = ({
-  blockId,
-  courseId,
-  lmsEndpointUrl,
-  studioEndpointUrl
-}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
-  store: _store.default,
-  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
-    learningContextId: courseId,
-    studioEndpointUrl,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoSelector.default, {
-      blockId,
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const VideoSelectorPage = _ref => {
+  let {
+    blockId,
+    courseId,
+    lmsEndpointUrl,
+    studioEndpointUrl
+  } = _ref;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
+    store: _store.default,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
       learningContextId: courseId,
-      lmsEndpointUrl,
-      studioEndpointUrl
+      studioEndpointUrl,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_VideoSelector.default, {
+        blockId,
+        learningContextId: courseId,
+        lmsEndpointUrl,
+        studioEndpointUrl
+      })
     })
-  })
-});
+  });
+};
 VideoSelectorPage.defaultProps = {
   blockId: null,
   courseId: null,
@@ -42,5 +45,6 @@ VideoSelectorPage.propTypes = {
   lmsEndpointUrl: _propTypes.default.string,
   studioEndpointUrl: _propTypes.default.string
 };
-var _default = exports.default = VideoSelectorPage;
+var _default = VideoSelectorPage;
+exports.default = _default;
 //# sourceMappingURL=VideoSelectorPage.js.map

@@ -77,5 +77,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Helper text describing usage of answer ranges'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

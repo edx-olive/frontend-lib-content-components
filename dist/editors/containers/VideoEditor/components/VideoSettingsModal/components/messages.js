@@ -85,5 +85,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Shown on the preview card if the video source could not be identified.'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

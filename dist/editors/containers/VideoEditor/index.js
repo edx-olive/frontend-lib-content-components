@@ -16,16 +16,17 @@ var _VideoEditorModal = _interopRequireDefault(require("./components/VideoEditor
 var _hooks = require("./hooks");
 var _messages = _interopRequireDefault(require("./messages"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const VideoEditor = ({
-  onClose,
-  returnFunction,
-  // injected
-  intl,
-  // redux
-  studioViewFinished,
-  isLibrary
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const VideoEditor = _ref => {
+  let {
+    onClose,
+    returnFunction,
+    // injected
+    intl,
+    // redux
+    studioViewFinished,
+    isLibrary
+  } = _ref;
   const {
     error,
     validateEntry
@@ -79,6 +80,8 @@ const mapStateToProps = state => ({
   isLibrary: _redux.selectors.app.isLibrary(state)
 });
 exports.mapStateToProps = mapStateToProps;
-const mapDispatchToProps = exports.mapDispatchToProps = {};
-var _default = exports.default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VideoEditor));
+const mapDispatchToProps = {};
+exports.mapDispatchToProps = mapDispatchToProps;
+var _default = (0, _i18n.injectIntl)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VideoEditor));
+exports.default = _default;
 //# sourceMappingURL=index.js.map

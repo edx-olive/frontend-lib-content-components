@@ -4,10 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.analyticsEvt = void 0;
-const analyticsEvt = exports.analyticsEvt = {
+const analyticsEvt = {
   editorSaveClick: 'edx.ui.authoring.editor.save',
   editorCancelClick: 'edx.ui.authoring.editor.cancel',
   videoGalleryCancelClick: 'edx.ui.authoring.videogallery.cancel'
 };
-var _default = exports.default = analyticsEvt;
+exports.analyticsEvt = analyticsEvt;
+var _default = analyticsEvt;
+exports.default = _default;
 //# sourceMappingURL=analyticsEvt.js.map

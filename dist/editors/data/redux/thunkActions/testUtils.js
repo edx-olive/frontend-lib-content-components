@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = exports.createTestFetcher = void 0;
 var _reduxMockStore = _interopRequireDefault(require("redux-mock-store"));
 var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* eslint-disable import/no-extraneous-dependencies */
 /* istanbul ignore file */
 
@@ -48,7 +48,8 @@ const createTestFetcher = (mockedMethod, thunkAction, args, onDispatch) => (reso
   });
 };
 exports.createTestFetcher = createTestFetcher;
-var _default = exports.default = {
+var _default = {
   createTestFetcher
 };
+exports.default = _default;
 //# sourceMappingURL=testUtils.js.map

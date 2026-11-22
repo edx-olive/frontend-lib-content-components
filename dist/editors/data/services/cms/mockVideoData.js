@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.videoDataProps = exports.singleVideoData = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _licenses = require("../../constants/licenses");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const videoDataProps = exports.videoDataProps = {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const videoDataProps = {
   videoSource: _propTypes.default.string,
   videoId: _propTypes.default.string,
   fallbackVideos: _propTypes.default.arrayOf(_propTypes.default.string),
@@ -31,7 +31,8 @@ const videoDataProps = exports.videoDataProps = {
     shareAlike: _propTypes.default.bool
   })
 };
-const singleVideoData = exports.singleVideoData = {
+exports.videoDataProps = videoDataProps;
+const singleVideoData = {
   videoSource: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   videoId: '7c12381b-6503-4d52-82bd-6ad01b902220',
   fallbackVideos: ['https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
@@ -60,4 +61,5 @@ const singleVideoData = exports.singleVideoData = {
     shareAlike: false
   }
 };
+exports.singleVideoData = singleVideoData;
 //# sourceMappingURL=mockVideoData.js.map

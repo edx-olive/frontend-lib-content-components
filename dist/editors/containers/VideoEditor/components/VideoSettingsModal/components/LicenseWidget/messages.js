@@ -127,5 +127,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'All Rights Reserved section message'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

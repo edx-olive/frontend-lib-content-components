@@ -44,5 +44,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Explanation in body of mismatched settings modal'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map
