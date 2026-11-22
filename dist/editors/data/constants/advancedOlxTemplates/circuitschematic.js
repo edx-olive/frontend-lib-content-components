@@ -10,7 +10,7 @@ exports.default = exports.circuitSchematic = void 0;
 //     display_name: Circuit Schematic Builder
 //     markdown: !!null
 // data: |
-const circuitSchematic = exports.circuitSchematic = `<problem>
+const circuitSchematic = `<problem>
     <p>
         Circuit schematic problems allow students to create virtual circuits by
         arranging elements such as voltage sources, capacitors, resistors, and
@@ -97,5 +97,7 @@ else:
         </solution>
     </schematicresponse>
 </problem>`;
-var _default = exports.default = circuitSchematic;
+exports.circuitSchematic = circuitSchematic;
+var _default = circuitSchematic;
+exports.default = _default;
 //# sourceMappingURL=circuitschematic.js.map

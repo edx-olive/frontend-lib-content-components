@@ -6,21 +6,23 @@ Object.defineProperty(exports, "__esModule", {
 exports.sortMessages = exports.sortKeys = exports.sortFunctions = exports.acceptedImgKeys = void 0;
 var _utils = require("../../../utils");
 var _messages = _interopRequireDefault(require("./messages"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const sortKeys = exports.sortKeys = (0, _utils.StrictDict)({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const sortKeys = (0, _utils.StrictDict)({
   dateNewest: 'dateNewest',
   dateOldest: 'dateOldest',
   nameAscending: 'nameAscending',
   nameDescending: 'nameDescending'
 });
+exports.sortKeys = sortKeys;
 const messageKeys = (0, _utils.keyStore)(_messages.default);
-const sortMessages = exports.sortMessages = (0, _utils.StrictDict)({
+const sortMessages = (0, _utils.StrictDict)({
   dateNewest: _messages.default[messageKeys.sortByDateNewest],
   dateOldest: _messages.default[messageKeys.sortByDateOldest],
   nameAscending: _messages.default[messageKeys.sortByNameAscending],
   nameDescending: _messages.default[messageKeys.sortByNameDescending]
 });
-const sortFunctions = exports.sortFunctions = (0, _utils.StrictDict)({
+exports.sortMessages = sortMessages;
+const sortFunctions = (0, _utils.StrictDict)({
   dateNewest: (a, b) => b.dateAdded - a.dateAdded,
   dateOldest: (a, b) => a.dateAdded - b.dateAdded,
   nameAscending: (a, b) => {
@@ -46,7 +48,8 @@ const sortFunctions = exports.sortFunctions = (0, _utils.StrictDict)({
     return b.dateAdded - a.dateAdded;
   }
 });
-const acceptedImgKeys = exports.acceptedImgKeys = (0, _utils.StrictDict)({
+exports.sortFunctions = sortFunctions;
+const acceptedImgKeys = (0, _utils.StrictDict)({
   gif: '.gif',
   jpg: '.jpg',
   jpeg: '.jpeg',
@@ -55,4 +58,5 @@ const acceptedImgKeys = exports.acceptedImgKeys = (0, _utils.StrictDict)({
   tiff: '.tiff',
   ico: '.ico'
 });
+exports.acceptedImgKeys = acceptedImgKeys;
 //# sourceMappingURL=utils.js.map

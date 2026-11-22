@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mockVideoData = exports.mockImageData = exports.mockBlockIdByType = void 0;
 /* istanbul ignore file */
-const mockImageData = exports.mockImageData = [{
+const mockImageData = [{
   displayName: 'shahrukh.jpg',
   contentType: 'image/jpeg',
   dateAdded: 'Jan 05, 2022 at 17:38 UTC',
@@ -46,7 +46,8 @@ const mockImageData = exports.mockImageData = [{
   locked: false,
   id: 'asset-v1:edX+test101+2021_T1+type@asset+block@Tennis_Ball.jpeg'
 }];
-const mockVideoData = exports.mockVideoData = [{
+exports.mockImageData = mockImageData;
+const mockVideoData = [{
   displayName: 'shahrukh.jpg',
   contentType: 'image/jpeg',
   dateAdded: 'Jan 05, 2022 at 17:38 UTC',
@@ -87,6 +88,7 @@ const mockVideoData = exports.mockVideoData = [{
   locked: false,
   id: 'asset-v1:edX+test101+2021_T1+type@asset+block@Tennis_Ball.jpeg'
 }];
+exports.mockVideoData = mockVideoData;
 const mockBlockIdByType = type => `${type}-block-id`;
 exports.mockBlockIdByType = mockBlockIdByType;
 //# sourceMappingURL=mockData.js.map

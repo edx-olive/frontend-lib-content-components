@@ -14,5 +14,6 @@ const multiSelect = `<problem>
     </checkboxgroup>
   </choiceresponse>
 </problem>`;
-var _default = exports.default = multiSelect;
+var _default = multiSelect;
+exports.default = _default;
 //# sourceMappingURL=multiSelect.js.map

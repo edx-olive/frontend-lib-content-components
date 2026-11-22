@@ -9,13 +9,14 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _core = require("@dnd-kit/core");
 var _sortable = require("@dnd-kit/sortable");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const DraggableList = ({
-  itemList,
-  setState,
-  updateOrder,
-  children
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const DraggableList = _ref => {
+  let {
+    itemList,
+    setState,
+    updateOrder,
+    children
+  } = _ref;
   const sensors = (0, _core.useSensors)((0, _core.useSensor)(_core.PointerSensor), (0, _core.useSensor)(_core.KeyboardSensor, {
     coordinateGetter: _sortable.sortableKeyboardCoordinates
   }));
@@ -56,5 +57,6 @@ DraggableList.propTypes = {
   updateOrder: _propTypes.default.func.isRequired,
   children: _propTypes.default.node.isRequired
 };
-var _default = exports.default = DraggableList;
+var _default = DraggableList;
+exports.default = _default;
 //# sourceMappingURL=DraggableList.js.map

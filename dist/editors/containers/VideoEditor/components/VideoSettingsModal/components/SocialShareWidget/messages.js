@@ -47,5 +47,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Message for disabled checkbox that notifies user that setting can be modified in course outline'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

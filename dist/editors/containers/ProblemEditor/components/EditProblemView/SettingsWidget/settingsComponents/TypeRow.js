@@ -11,20 +11,21 @@ var _icons = require("@edx/paragon/icons");
 var _hooks = require("../hooks");
 var _Button = _interopRequireDefault(require("../../../../../../sharedComponents/Button"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const TypeRow = ({
-  answers,
-  blockTitle,
-  correctAnswerCount,
-  typeKey,
-  label,
-  selected,
-  problemType,
-  lastRow,
-  setBlockTitle,
-  updateField,
-  updateAnswer
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const TypeRow = _ref => {
+  let {
+    answers,
+    blockTitle,
+    correctAnswerCount,
+    typeKey,
+    label,
+    selected,
+    problemType,
+    lastRow,
+    setBlockTitle,
+    updateField,
+    updateAnswer
+  } = _ref;
   const {
     onClick
   } = (0, _hooks.typeRowHooks)({
@@ -76,5 +77,6 @@ TypeRow.propTypes = {
   updateAnswer: _propTypes.default.func.isRequired,
   updateField: _propTypes.default.func.isRequired
 };
-var _default = exports.default = TypeRow;
+var _default = TypeRow;
+exports.default = _default;
 //# sourceMappingURL=TypeRow.js.map

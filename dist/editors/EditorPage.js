@@ -11,31 +11,34 @@ var _store = _interopRequireDefault(require("./data/store"));
 var _Editor = _interopRequireDefault(require("./Editor"));
 var _ErrorBoundary = _interopRequireDefault(require("./sharedComponents/ErrorBoundary"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const EditorPage = ({
-  courseId,
-  blockType,
-  blockId,
-  lmsEndpointUrl,
-  studioEndpointUrl,
-  onClose,
-  returnFunction
-}) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
-  store: _store.default,
-  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
-    learningContextId: courseId,
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const EditorPage = _ref => {
+  let {
+    courseId,
+    blockType,
+    blockId,
+    lmsEndpointUrl,
     studioEndpointUrl,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Editor.default, {
-      onClose,
+    onClose,
+    returnFunction
+  } = _ref;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
+    store: _store.default,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ErrorBoundary.default, {
       learningContextId: courseId,
-      blockType,
-      blockId,
-      lmsEndpointUrl,
       studioEndpointUrl,
-      returnFunction
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Editor.default, {
+        onClose,
+        learningContextId: courseId,
+        blockType,
+        blockId,
+        lmsEndpointUrl,
+        studioEndpointUrl,
+        returnFunction
+      })
     })
-  })
-});
+  });
+};
 exports.EditorPage = EditorPage;
 EditorPage.defaultProps = {
   blockId: null,
@@ -54,5 +57,6 @@ EditorPage.propTypes = {
   returnFunction: _propTypes.default.func,
   studioEndpointUrl: _propTypes.default.string
 };
-var _default = exports.default = EditorPage;
+var _default = EditorPage;
+exports.default = _default;
 //# sourceMappingURL=EditorPage.js.map

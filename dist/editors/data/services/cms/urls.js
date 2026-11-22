@@ -4,22 +4,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.videoTranscripts = exports.videoFeatures = exports.unit = exports.thumbnailUpload = exports.returnUrl = exports.replaceTranscript = exports.mediaTranscriptURL = exports.libraryV1 = exports.downloadVideoTranscriptURL = exports.downloadVideoHandoutUrl = exports.courseVideos = exports.courseDetailsUrl = exports.courseAssets = exports.courseAdvanceSettings = exports.checkTranscriptsForImport = exports.blockStudioView = exports.blockAncestor = exports.block = void 0;
-const libraryV1 = ({
-  studioEndpointUrl,
-  learningContextId
-}) => `${studioEndpointUrl}/library/${learningContextId}`;
+const libraryV1 = _ref => {
+  let {
+    studioEndpointUrl,
+    learningContextId
+  } = _ref;
+  return `${studioEndpointUrl}/library/${learningContextId}`;
+};
 exports.libraryV1 = libraryV1;
-const unit = ({
-  studioEndpointUrl,
-  unitUrl
-}) => `${studioEndpointUrl}/container/${unitUrl.data.ancestors[0]?.id}`;
+const unit = _ref2 => {
+  let {
+    studioEndpointUrl,
+    unitUrl
+  } = _ref2;
+  return `${studioEndpointUrl}/container/${unitUrl.data.ancestors[0]?.id}`;
+};
 exports.unit = unit;
-const returnUrl = ({
-  studioEndpointUrl,
-  unitUrl,
-  learningContextId,
-  blockId
-}) => {
+const returnUrl = _ref3 => {
+  let {
+    studioEndpointUrl,
+    unitUrl,
+    learningContextId,
+    blockId
+  } = _ref3;
   if (learningContextId && learningContextId.startsWith('library-v1')) {
     // when the learning context is a v1 library, return to the library page
     return libraryV1({
@@ -45,15 +52,19 @@ const returnUrl = ({
   return '';
 };
 exports.returnUrl = returnUrl;
-const block = ({
-  studioEndpointUrl,
-  blockId
-}) => blockId.startsWith('lb:') ? `${studioEndpointUrl}/api/xblock/v2/xblocks/${blockId}/fields/` : `${studioEndpointUrl}/xblock/${blockId}`;
+const block = _ref4 => {
+  let {
+    studioEndpointUrl,
+    blockId
+  } = _ref4;
+  return blockId.startsWith('lb:') ? `${studioEndpointUrl}/api/xblock/v2/xblocks/${blockId}/fields/` : `${studioEndpointUrl}/xblock/${blockId}`;
+};
 exports.block = block;
-const blockAncestor = ({
-  studioEndpointUrl,
-  blockId
-}) => {
+const blockAncestor = _ref5 => {
+  let {
+    studioEndpointUrl,
+    blockId
+  } = _ref5;
   if (blockId.includes('block-v1')) {
     return `${block({
       studioEndpointUrl,
@@ -67,79 +78,118 @@ const blockAncestor = ({
   return '';
 };
 exports.blockAncestor = blockAncestor;
-const blockStudioView = ({
-  studioEndpointUrl,
-  blockId
-}) => blockId.includes('block-v1') ? `${block({
-  studioEndpointUrl,
-  blockId
-})}/studio_view` : `${studioEndpointUrl}/api/xblock/v2/xblocks/${blockId}/view/studio_view/`;
+const blockStudioView = _ref6 => {
+  let {
+    studioEndpointUrl,
+    blockId
+  } = _ref6;
+  return blockId.includes('block-v1') ? `${block({
+    studioEndpointUrl,
+    blockId
+  })}/studio_view` : `${studioEndpointUrl}/api/xblock/v2/xblocks/${blockId}/view/studio_view/`;
+};
 exports.blockStudioView = blockStudioView;
-const courseAssets = ({
-  studioEndpointUrl,
-  learningContextId
-}) => `${studioEndpointUrl}/assets/${learningContextId}/?page_size=500`;
+const courseAssets = _ref7 => {
+  let {
+    studioEndpointUrl,
+    learningContextId
+  } = _ref7;
+  return `${studioEndpointUrl}/assets/${learningContextId}/?page_size=500`;
+};
 exports.courseAssets = courseAssets;
-const thumbnailUpload = ({
-  studioEndpointUrl,
-  learningContextId,
-  videoId
-}) => `${studioEndpointUrl}/video_images/${learningContextId}/${videoId}`;
+const thumbnailUpload = _ref8 => {
+  let {
+    studioEndpointUrl,
+    learningContextId,
+    videoId
+  } = _ref8;
+  return `${studioEndpointUrl}/video_images/${learningContextId}/${videoId}`;
+};
 exports.thumbnailUpload = thumbnailUpload;
-const videoTranscripts = ({
-  studioEndpointUrl,
-  blockId
-}) => `${block({
-  studioEndpointUrl,
-  blockId
-})}/handler/studio_transcript/translation`;
+const videoTranscripts = _ref9 => {
+  let {
+    studioEndpointUrl,
+    blockId
+  } = _ref9;
+  return `${block({
+    studioEndpointUrl,
+    blockId
+  })}/handler/studio_transcript/translation`;
+};
 exports.videoTranscripts = videoTranscripts;
-const downloadVideoTranscriptURL = ({
-  studioEndpointUrl,
-  blockId,
-  language
-}) => `${videoTranscripts({
-  studioEndpointUrl,
-  blockId
-})}?language_code=${language}`;
+const downloadVideoTranscriptURL = _ref10 => {
+  let {
+    studioEndpointUrl,
+    blockId,
+    language
+  } = _ref10;
+  return `${videoTranscripts({
+    studioEndpointUrl,
+    blockId
+  })}?language_code=${language}`;
+};
 exports.downloadVideoTranscriptURL = downloadVideoTranscriptURL;
-const mediaTranscriptURL = ({
-  studioEndpointUrl,
-  transcriptUrl
-}) => `${studioEndpointUrl}${transcriptUrl}`;
+const mediaTranscriptURL = _ref11 => {
+  let {
+    studioEndpointUrl,
+    transcriptUrl
+  } = _ref11;
+  return `${studioEndpointUrl}${transcriptUrl}`;
+};
 exports.mediaTranscriptURL = mediaTranscriptURL;
-const downloadVideoHandoutUrl = ({
-  studioEndpointUrl,
-  handout
-}) => `${studioEndpointUrl}${handout}`;
+const downloadVideoHandoutUrl = _ref12 => {
+  let {
+    studioEndpointUrl,
+    handout
+  } = _ref12;
+  return `${studioEndpointUrl}${handout}`;
+};
 exports.downloadVideoHandoutUrl = downloadVideoHandoutUrl;
-const courseDetailsUrl = ({
-  studioEndpointUrl,
-  learningContextId
-}) => `${studioEndpointUrl}/settings/details/${learningContextId}`;
+const courseDetailsUrl = _ref13 => {
+  let {
+    studioEndpointUrl,
+    learningContextId
+  } = _ref13;
+  return `${studioEndpointUrl}/settings/details/${learningContextId}`;
+};
 exports.courseDetailsUrl = courseDetailsUrl;
-const checkTranscriptsForImport = ({
-  studioEndpointUrl,
-  parameters
-}) => `${studioEndpointUrl}/transcripts/check?data=${parameters}`;
+const checkTranscriptsForImport = _ref14 => {
+  let {
+    studioEndpointUrl,
+    parameters
+  } = _ref14;
+  return `${studioEndpointUrl}/transcripts/check?data=${parameters}`;
+};
 exports.checkTranscriptsForImport = checkTranscriptsForImport;
-const replaceTranscript = ({
-  studioEndpointUrl,
-  parameters
-}) => `${studioEndpointUrl}/transcripts/replace?data=${parameters}`;
+const replaceTranscript = _ref15 => {
+  let {
+    studioEndpointUrl,
+    parameters
+  } = _ref15;
+  return `${studioEndpointUrl}/transcripts/replace?data=${parameters}`;
+};
 exports.replaceTranscript = replaceTranscript;
-const courseAdvanceSettings = ({
-  studioEndpointUrl,
-  learningContextId
-}) => `${studioEndpointUrl}/api/contentstore/v0/advanced_settings/${learningContextId}`;
+const courseAdvanceSettings = _ref16 => {
+  let {
+    studioEndpointUrl,
+    learningContextId
+  } = _ref16;
+  return `${studioEndpointUrl}/api/contentstore/v0/advanced_settings/${learningContextId}`;
+};
 exports.courseAdvanceSettings = courseAdvanceSettings;
-const videoFeatures = ({
-  studioEndpointUrl
-}) => `${studioEndpointUrl}/video_features/`;
+const videoFeatures = _ref17 => {
+  let {
+    studioEndpointUrl
+  } = _ref17;
+  return `${studioEndpointUrl}/video_features/`;
+};
 exports.videoFeatures = videoFeatures;
-const courseVideos = ({
-  studioEndpointUrl,
-  learningContextId
-}) => `${studioEndpointUrl}/videos/${learningContextId}`;
+const courseVideos = _ref18 => {
+  let {
+    studioEndpointUrl,
+    learningContextId
+  } = _ref18;
+  return `${studioEndpointUrl}/videos/${learningContextId}`;
+};
 exports.courseVideos = courseVideos;
 //# sourceMappingURL=urls.js.map

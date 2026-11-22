@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.textInputWithFeedbackAndHintsWithMultipleAnswers = exports.textInputWithFeedbackAndHints = exports.numericInputWithFeedbackAndHints = exports.numericInputWithAnswerRange = exports.numberParseTest = exports.multipleChoiceWithFeedbackAndHints = exports.dropdownWithFeedbackAndHints = exports.checkboxesWithFeedbackAndHints = void 0;
-const checkboxesWithFeedbackAndHints = exports.checkboxesWithFeedbackAndHints = {
+const checkboxesWithFeedbackAndHints = {
   solution: `
     <p>
         You can form a voltage divider that evenly divides the input
@@ -38,7 +38,8 @@ const checkboxesWithFeedbackAndHints = exports.checkboxesWithFeedbackAndHints = 
     1: 'You can specify optional feedback for one, several, or all answer combinations.'
   }
 };
-const dropdownWithFeedbackAndHints = exports.dropdownWithFeedbackAndHints = {
+exports.checkboxesWithFeedbackAndHints = checkboxesWithFeedbackAndHints;
+const dropdownWithFeedbackAndHints = {
   solution: '',
   selectedFeedback: {
     A: '<p>You can specify optional feedback like this, which appears after this answer is submitted.</p>',
@@ -48,7 +49,8 @@ const dropdownWithFeedbackAndHints = exports.dropdownWithFeedbackAndHints = {
   hints: ['<p>You can add an optional hint like this. Problems that have a hint include a hint button, and this text appears the first time learners select the button.</p>', '<p>If you add more than one hint, a different hint appears each time learners select the hint button.</p>'],
   question: '<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for dropdown with hints and feedback problems. Edit this component to replace this template with your own assessment.</p><label>Add the question text, or prompt, here. This text is required.</label><em>You can add an optional tip or note related to the prompt like this.</em>'
 };
-const multipleChoiceWithFeedbackAndHints = exports.multipleChoiceWithFeedbackAndHints = {
+exports.dropdownWithFeedbackAndHints = dropdownWithFeedbackAndHints;
+const multipleChoiceWithFeedbackAndHints = {
   solution: '<p>You can add a solution</p>',
   question: `<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for multiple choice with hints and feedback problems. Edit this component to replace this template with your own assessment.</p>
     <p><label>Add the question text, or prompt, here. This text is required.</label></p>
@@ -65,7 +67,8 @@ const multipleChoiceWithFeedbackAndHints = exports.multipleChoiceWithFeedbackAnd
   },
   hints: ['<p>You can add an optional hint like this. Problems that have a hint include a hint button, and this text appears the first time learners select the button.</p>', '<p>If you add more than one hint, a different hint appears each time learners select the hint button.</p>']
 };
-const numericInputWithFeedbackAndHints = exports.numericInputWithFeedbackAndHints = {
+exports.multipleChoiceWithFeedbackAndHints = multipleChoiceWithFeedbackAndHints;
+const numericInputWithFeedbackAndHints = {
   solution: '',
   selectedFeedback: {
     A: '<p>You can specify optional feedback like this, which appears after this answer is submitted.</p>',
@@ -74,12 +77,14 @@ const numericInputWithFeedbackAndHints = exports.numericInputWithFeedbackAndHint
   hints: ['<p>You can add an optional hint like this. Problems that have a hint include a hint button, and this text appears the first time learners select the button.</p>', '<p>If you add more than one hint, a different hint appears each time learners select the hint button.</p>'],
   question: '<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for numerical input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p><label>Add the question text, or prompt, here. This text is required.</label><em>You can add an optional tip or note related to the prompt like this.</em>'
 };
-const numericInputWithAnswerRange = exports.numericInputWithAnswerRange = {
+exports.numericInputWithFeedbackAndHints = numericInputWithFeedbackAndHints;
+const numericInputWithAnswerRange = {
   solution: '',
   hints: [],
   question: '<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for numerical input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p><label>Add the question text, or prompt, here. This text is required.</label><em>You can add an optional tip or note related to the prompt like this.</em>'
 };
-const textInputWithFeedbackAndHints = exports.textInputWithFeedbackAndHints = {
+exports.numericInputWithAnswerRange = numericInputWithAnswerRange;
+const textInputWithFeedbackAndHints = {
   solution: '',
   selectedFeedback: {
     A: '<p>You can specify optional feedback like this, which appears after this answer is submitted.</p>',
@@ -89,7 +94,8 @@ const textInputWithFeedbackAndHints = exports.textInputWithFeedbackAndHints = {
   hints: ['<p>You can add an optional hint like this. Problems that have a hint include a hint button, and this text appears the first time learners select the button.</p>', '<p>If you add more than one hint, a different hint appears each time learners select the hint button.</p>'],
   question: '<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for text input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p><label>Add the question text, or prompt, here. This text is required.</label><em>You can add an optional tip or note related to the prompt like this.</em>'
 };
-const textInputWithFeedbackAndHintsWithMultipleAnswers = exports.textInputWithFeedbackAndHintsWithMultipleAnswers = {
+exports.textInputWithFeedbackAndHints = textInputWithFeedbackAndHints;
+const textInputWithFeedbackAndHintsWithMultipleAnswers = {
   solution: '',
   selectedFeedback: {
     A: '<p>You can specify optional feedback like this, which appears after this answer is submitted.</p>',
@@ -100,7 +106,8 @@ const textInputWithFeedbackAndHintsWithMultipleAnswers = exports.textInputWithFe
   hints: ['<p>You can add an optional hint like this. Problems that have a hint include a hint button, and this text appears the first time learners select the button.</p>', '<p>If you add more than one hint, a different hint appears each time learners select the hint button.</p>'],
   question: '<p>You can use this template as a guide to the simple editor markdown and OLX markup to use for text input with hints and feedback problems. Edit this component to replace this template with your own assessment.</p><label>Add the question text, or prompt, here. This text is required.</label><em>You can add an optional tip or note related to the prompt like this.</em>'
 };
-const numberParseTest = exports.numberParseTest = {
+exports.textInputWithFeedbackAndHintsWithMultipleAnswers = textInputWithFeedbackAndHintsWithMultipleAnswers;
+const numberParseTest = {
   solution: '',
   answers: {
     A: `<span style="font-family: 'courier new', courier;"><strong>0x10</strong></span>`,
@@ -111,7 +118,9 @@ const numberParseTest = exports.numberParseTest = {
     // eslint-disable-line
     D: `<span style="font-family: 'courier new', courier;"><strong>0009</strong></span>` // eslint-disable-line
   },
+
   hints: [],
   question: '<p>What is the content of the register x2 after executing the following three lines of instructions?</p>'
 };
+exports.numberParseTest = numberParseTest;
 //# sourceMappingURL=editorTestData.js.map

@@ -8,13 +8,14 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _paragon = require("@edx/paragon");
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const Checker = ({
-  hasSingleAnswer,
-  answer,
-  setAnswer,
-  disabled
-}) => {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const Checker = _ref => {
+  let {
+    hasSingleAnswer,
+    answer,
+    setAnswer,
+    disabled
+  } = _ref;
   let CheckerType = _paragon.Form.Checkbox;
   if (hasSingleAnswer) {
     CheckerType = _paragon.Form.Radio;
@@ -47,5 +48,6 @@ Checker.propTypes = {
   setAnswer: _propTypes.default.func.isRequired,
   disabled: _propTypes.default.bool
 };
-var _default = exports.default = Checker;
+var _default = Checker;
+exports.default = _default;
 //# sourceMappingURL=index.js.map

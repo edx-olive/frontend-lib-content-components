@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.dropdown = exports.default = void 0;
 /* eslint-disable */
-const dropdown = exports.dropdown = `<problem>
+const dropdown = `<problem>
   <optionresponse>
     <optioninput>
       <option correct="True"></option>
@@ -14,5 +14,7 @@ const dropdown = exports.dropdown = `<problem>
     </optioninput>
   </optionresponse>
 </problem>`;
-var _default = exports.default = dropdown;
+exports.dropdown = dropdown;
+var _default = dropdown;
+exports.default = _default;
 //# sourceMappingURL=dropdown.js.map

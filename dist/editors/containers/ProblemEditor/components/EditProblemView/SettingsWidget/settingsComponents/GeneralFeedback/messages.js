@@ -27,5 +27,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'message which informs use there is no general feedback set.'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map

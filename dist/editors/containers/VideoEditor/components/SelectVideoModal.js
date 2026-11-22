@@ -12,12 +12,14 @@ var _redux = require("../../../data/redux");
 var _BaseModal = _interopRequireDefault(require("./BaseModal"));
 var _module = _interopRequireWildcard(require("./SelectVideoModal"));
 var _jsxRuntime = require("react/jsx-runtime");
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const hooks = exports.hooks = {
-  videoList: ({
-    fetchVideos
-  }) => {
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const hooks = {
+  videoList: _ref => {
+    let {
+      fetchVideos
+    } = _ref;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [videos, setVideos] = _react.default.useState(null);
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -28,17 +30,22 @@ const hooks = exports.hooks = {
     }, []);
     return videos;
   },
-  onSelectClick: ({
-    setSelection,
-    videos
-  }) => () => setSelection(videos[0])
+  onSelectClick: _ref2 => {
+    let {
+      setSelection,
+      videos
+    } = _ref2;
+    return () => setSelection(videos[0]);
+  }
 };
-const SelectVideoModal = ({
-  fetchVideos,
-  isOpen,
-  close,
-  setSelection
-}) => {
+exports.hooks = hooks;
+const SelectVideoModal = _ref3 => {
+  let {
+    fetchVideos,
+    isOpen,
+    close,
+    setSelection
+  } = _ref3;
   const videos = _module.hooks.videoList({
     fetchVideos
   });
@@ -68,8 +75,10 @@ SelectVideoModal.propTypes = {
 };
 const mapStateToProps = () => ({});
 exports.mapStateToProps = mapStateToProps;
-const mapDispatchToProps = exports.mapDispatchToProps = {
+const mapDispatchToProps = {
   fetchVideos: _redux.thunkActions.app.fetchVideos
 };
-var _default = exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectVideoModal);
+exports.mapDispatchToProps = mapDispatchToProps;
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectVideoModal);
+exports.default = _default;
 //# sourceMappingURL=SelectVideoModal.js.map

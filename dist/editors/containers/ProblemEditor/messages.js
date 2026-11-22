@@ -12,5 +12,6 @@ const messages = (0, _i18n.defineMessages)({
     description: 'Error message for problem block failing to load'
   }
 });
-var _default = exports.default = messages;
+var _default = messages;
+exports.default = _default;
 //# sourceMappingURL=messages.js.map
