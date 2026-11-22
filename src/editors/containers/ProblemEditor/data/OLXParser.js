@@ -575,6 +575,14 @@ export class OLXParser {
   getProblemType() {
     const problemKeys = Object.keys(this.problem);
     const problemTypeKeys = problemKeys.filter(key => Object.values(ProblemTypeKeys).indexOf(key) !== -1);
+    // Any response type the visual editor can't model (symbolicresponse, customresponse,
+    // formularesponse, ...) must open in the advanced editor, otherwise it is dropped on save.
+    const hasUnsupportedResponse = problemKeys.some(
+      key => responseKeys.includes(key) && !Object.values(ProblemTypeKeys).includes(key),
+    );
+    if (hasUnsupportedResponse) {
+      return ProblemTypeKeys.ADVANCED;
+    }
     if (problemTypeKeys.length === 0) {
       // a blank problem is a problem which contains only `<problem></problem>` as it's olx.
       // blank problems are not given types, so that a type may be selected.

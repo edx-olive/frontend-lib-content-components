@@ -97,11 +97,15 @@ export const apiMethods = {
     language,
     blockId,
     videoId,
+    action,
   }) => {
-    const deleteJSON = { data: { lang: language, edx_video_id: videoId } };
+    const data = { lang: language, edx_video_id: videoId };
+    if (action) {
+      data.action = action;
+    }
     return deleteObject(
       urls.videoTranscripts({ studioEndpointUrl, blockId }),
-      deleteJSON,
+      { data },
     );
   },
   uploadTranscript: ({

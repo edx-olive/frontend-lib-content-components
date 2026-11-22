@@ -97,6 +97,26 @@ const messages = defineMessages({
     defaultMessage: 'Delete this transcript?',
     description: 'Title for Warning which allows users to select next step in the process of deleting a transcript',
   },
+  sharedVideoTitle: {
+    id: 'authoring.videoeditor.transcripts.sharedVideoTitle',
+    defaultMessage: 'This video is shared',
+    description: 'Title for shared video warning when deleting a transcript',
+  },
+  sharedVideoMessage: {
+    id: 'authoring.videoeditor.transcripts.sharedVideoMessage',
+    defaultMessage: 'This transcript is shared across multiple video components. How would you like to proceed?',
+    description: 'Message for shared video warning when deleting a transcript',
+  },
+  removeForAllCopiesLabel: {
+    id: 'authoring.videoeditor.transcripts.removeForAllCopiesLabel',
+    defaultMessage: 'Remove for all copies',
+    description: 'Label for button to remove transcript from all video copies',
+  },
+  disconnectAndRemoveLabel: {
+    id: 'authoring.videoeditor.transcripts.disconnectAndRemoveLabel',
+    defaultMessage: 'Disconnect and remove',
+    description: 'Label for button to disconnect video and remove transcript from this component only',
+  },
   fileTypeWarning: {
     id: 'authoring.videoeditor.transcripts.fileTypeWarning',
     defaultMessage: 'Only SRT files can be uploaded. Please select a file ending in .srt to upload.',

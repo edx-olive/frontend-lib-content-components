@@ -16,7 +16,7 @@ import {
   FormattedMessage,
   injectIntl,
 } from '@edx/frontend-platform/i18n';
-import { thunkActions } from '../../../../../../data/redux';
+import { thunkActions, actions } from '../../../../../../data/redux';
 
 import TranscriptActionMenu from './TranscriptActionMenu';
 import LanguageSelector from './LanguageSelector';
@@ -44,8 +44,58 @@ export const Transcript = ({
   transcriptUrl,
   // redux
   deleteTranscript,
+  replaceTranscript,
+  sharedVideoWarning,
+  clearSharedVideoWarning,
 }) => {
   const { inDeleteConfirmation, launchDeleteConfirmation, cancelDelete } = module.hooks.setUpDeleteConfirmation();
+  const isSharedWarning = sharedVideoWarning && sharedVideoWarning.language === language;
+
+  if (isSharedWarning) {
+    const { replaceData } = sharedVideoWarning;
+    const handleAction = (action) => {
+      clearSharedVideoWarning();
+      if (replaceData) {
+        replaceTranscript({ language, action, ...replaceData });
+      } else {
+        deleteTranscript({ language, action });
+      }
+    };
+    return (
+      <Card className="mb-2">
+        <Card.Header title={(<FormattedMessage {...messages.sharedVideoTitle} />)} />
+        <Card.Body>
+          <Card.Section>
+            <FormattedMessage {...messages.sharedVideoMessage} />
+          </Card.Section>
+          <Card.Footer>
+            <Button
+              variant="tertiary"
+              className="mb-2 mb-sm-0"
+              onClick={clearSharedVideoWarning}
+            >
+              <FormattedMessage {...messages.cancelDeleteLabel} />
+            </Button>
+            <Button
+              variant="outline-primary"
+              className="mb-2 mb-sm-0"
+              onClick={() => handleAction('disconnect')}
+            >
+              <FormattedMessage {...messages.disconnectAndRemoveLabel} />
+            </Button>
+            <Button
+              variant="danger"
+              className="mb-2 mb-sm-0"
+              onClick={() => handleAction('delete_all')}
+            >
+              <FormattedMessage {...messages.removeForAllCopiesLabel} />
+            </Button>
+          </Card.Footer>
+        </Card.Body>
+      </Card>
+    );
+  }
+
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -66,7 +116,6 @@ export const Transcript = ({
                   className="mb-2 mb-sm-0"
                   onClick={() => {
                     deleteTranscript({ language });
-                    // stop showing the card
                     cancelDelete();
                   }}
                 >
@@ -105,6 +154,7 @@ export const Transcript = ({
 
 Transcript.defaultProps = {
   transcriptUrl: undefined,
+  sharedVideoWarning: null,
 };
 
 Transcript.propTypes = {
@@ -112,12 +162,24 @@ Transcript.propTypes = {
   language: PropTypes.string.isRequired,
   transcriptUrl: PropTypes.string,
   deleteTranscript: PropTypes.func.isRequired,
+  replaceTranscript: PropTypes.func.isRequired,
+  sharedVideoWarning: PropTypes.shape({
+    language: PropTypes.string,
+    replaceData: PropTypes.shape({
+      newFile: PropTypes.object,
+      newFilename: PropTypes.string,
+    }),
+  }),
+  clearSharedVideoWarning: PropTypes.func.isRequired,
 };
 
-export const mapStateToProps = () => ({
+export const mapStateToProps = (state) => ({
+  sharedVideoWarning: state.video.sharedVideoWarning || null,
 });
-export const mapDispatchToProps = {
-  deleteTranscript: thunkActions.video.deleteTranscript,
-};
+export const mapDispatchToProps = (dispatch) => ({
+  deleteTranscript: ({ language, action }) => dispatch(thunkActions.video.deleteTranscript({ language, action })),
+  replaceTranscript: ({ language, action, newFile, newFilename }) => dispatch(thunkActions.video.replaceTranscript({ language, action, newFile, newFilename })),
+  clearSharedVideoWarning: () => dispatch(actions.video.updateField({ sharedVideoWarning: null })),
+});
 
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Transcript));

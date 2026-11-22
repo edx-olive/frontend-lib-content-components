@@ -51,8 +51,17 @@ export const loadVideoData = (selectedVideoId, selectedVideoUrl) => (dispatch, g
   const videoSourceUrl = selectedVideoUrl != null ? selectedVideoUrl : videoUrl;
   const [licenseType, licenseOptions] = module.parseLicense({ licenseData: studioView, level: 'block' });
   console.log(licenseType);
-  const transcripts = rawVideoData.transcriptsFromSelected ? rawVideoData.transcriptsFromSelected
+  let transcripts = rawVideoData.transcriptsFromSelected ? rawVideoData.transcriptsFromSelected
     : module.parseTranscripts({ transcriptsData: studioView });
+
+  // Filter out stale transcripts that no longer exist in VAL
+  if (videoId && !rawVideoData.transcriptsFromSelected) {
+    const valVideo = _.find(rawVideos, v => _.get(v, 'edx_video_id') === videoId);
+    if (valVideo && valVideo.transcripts) {
+      const valLanguages = valVideo.transcripts;
+      transcripts = transcripts.filter(lang => valLanguages.includes(lang));
+    }
+  }
 
   const [courseLicenseType, courseLicenseDetails] = module.parseLicense({
     licenseData: courseData.license,
@@ -335,15 +344,25 @@ export const uploadTranscript = ({ language, file }) => (dispatch, getState) => 
   }));
 };
 
-export const deleteTranscript = ({ language }) => (dispatch, getState) => {
+export const deleteTranscript = ({ language, action }) => (dispatch, getState) => {
   const state = getState();
   const { transcripts, videoId } = state.video;
+  console.log('deleteTranscript called', { videoId, action, language });
+  if (videoId && !action) {
+    dispatch(actions.video.updateField({ sharedVideoWarning: { language } }));
+    return;
+  }
   dispatch(requests.deleteTranscript({
     language,
     videoId,
+    action,
     onSuccess: () => {
       const updatedTranscripts = transcripts.filter((langCode) => langCode !== language);
-      dispatch(actions.video.updateField({ transcripts: updatedTranscripts }));
+      const updates = { transcripts: updatedTranscripts, sharedVideoWarning: null };
+      if (action === 'disconnect') {
+        updates.videoId = '';
+      }
+      dispatch(actions.video.updateField(updates));
     },
   }));
 };
@@ -372,12 +391,19 @@ export const updateTranscriptLanguage = ({ newLanguageCode, languageBeforeChange
   }));
 };
 
-export const replaceTranscript = ({ newFile, newFilename, language }) => (dispatch, getState) => {
+export const replaceTranscript = ({ newFile, newFilename, language, action }) => (dispatch, getState) => {
   const state = getState();
   const { videoId } = state.video;
+  if (videoId && !action) {
+    dispatch(actions.video.updateField({
+      sharedVideoWarning: { language, replaceData: { newFile, newFilename } },
+    }));
+    return;
+  }
   dispatch(requests.deleteTranscript({
     language,
     videoId,
+    action,
     onSuccess: () => {
       dispatch(uploadTranscript({ language, file: newFile, filename: newFilename }));
     },
